@@ -1,122 +1,135 @@
-/* Colores personalizados y estilo general */
+/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9; /* Color de fondo personalizado */
-    color: #333;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
-header {
-    background-color: #007bff; /* Color de encabezado personalizado */
-    color: white;
-    padding: 1rem 0;
-    text-align: center;
+/* Encabezados */
+h1, h2, h3 {
+  color: #2c3e50;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-}
-
-/* Estilos a los encabezados y párrafos */
 h1 {
-    font-size: 2.5em;
-    border-bottom: 3px solid white;
-    display: inline-block;
-    padding-bottom: 5px;
+  background-color: #3498db;
+  color: white;
+  padding: 20px;
+  text-align: center;
 }
 
 h2 {
-    color: #0056b3;
-    padding-top: 20px;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 8px;
+  margin-top: 30px;
 }
 
+h3 {
+  color: #2980b9;
+  margin-top: 20px;
+}
+
+/* Párrafos y énfasis */
 p {
-    margin-bottom: 1rem;
-    padding: 0 20px;
+  line-height: 1.6;
+  margin-bottom: 16px;
 }
 
 strong {
-    color: #d9534f; /* Color para texto fuerte */
+  color: #e74c3c;
 }
 
 em {
-    font-style: italic;
-    color: #5cb85c; /* Color para énfasis */
+  font-style: italic;
+  color: #27ae60;
 }
 
-/* Estilos a la tabla */
+/* Tabla */
 table {
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    border: 2px solid #6c757d; /* Borde a la tabla */
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
 }
 
 th, td {
-    padding: 12px;
-    text-align: left;
-    border: 1px solid #ddd;
+  border: 1px solid #3498db;
+  padding: 10px;
+  text-align: left;
 }
 
-thead {
-    background-color: #6c757d;
-    color: white;
+th {
+  background-color: #3498db;
+  color: white;
 }
 
-/* Estilos al formulario */
+/* Formulario */
 form {
-    width: 50%;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ffc107; /* Borde al formulario */
-    border-radius: 8px;
-    background-color: #fff3cd;
+  background-color: #ecf0f1;
+  padding: 20px;
+  border: 1px solid #bdc3c7;
+  border-radius: 8px;
+  max-width: 500px;
 }
 
-form div {
-    margin-bottom: 15px;
+form input[type="text"],
+form input[type="email"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+form input[type="submit"] {
+  background-color: #2ecc71;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-input[type="text"], input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+form input[type="submit"]:hover {
+  background-color: #27ae60;
 }
 
-button[type="submit"] {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+/* Navegación */
+nav ul {
+  list-style: none;
+  background-color: #2c3e50;
+  padding: 0;
+  text-align: center;
 }
 
+nav li {
+  display: inline-block;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 15px 20px;
+  display: block;
+}
+
+nav a:hover {
+  background-color: #34495e;
+}
+
+/* Imagen y video */
+img, video {
+  max-width: 100%;
+  height: auto;
+  margin: 15px 0;
+  display: block;
+}
+
+/* Footer */
 footer {
-    text-align: center;
-    padding: 1rem 0;
-    background-color: #343a40;
-    color: white;
-    margin-top: 30px;
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
 }
