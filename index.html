@@ -1,25 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Multimedia en la Web</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Desarrollo de Aplicaciones Web</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h2>Multimedia en la Web</h2>
-  <p>Aquí demostraremos cómo insertar una imagen y un video. Presta <em>atención</em> a la estructura de las rutas.</p>
+  <header>
+    <h1>Desarrollo de Aplicaciones Web</h1>
+    <nav>
+      <ul>
+        <li><a href="#introduccion">Introducción</a></li>
+        <li><a href="#tecnologias">Tecnologías</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <h3>Imagen</h3>
-  <img src="assets/img/imagen1.jpg" alt="Descripción de una imagen relevante para el tema" width="600">
+  <main>
+    <section id="introduccion">
+      <h2>Introducción al Desarrollo Web</h2>
+      <p>El <strong>desarrollo de aplicaciones web</strong> es una disciplina clave en la era digital. Permite crear experiencias interactivas accesibles desde cualquier dispositivo con navegador.</p>
+      <p>Es fundamental entender los principios de la <em>estructura semántica</em> y el uso responsable de tecnologías como HTML, CSS y JavaScript.</p>
+      
+      <h3>Objetivos del Aprendizaje</h3>
+      <ul>
+        <li>Crear estructuras HTML semánticas</li>
+        <li>Diseñar interfaces con CSS</li>
+        <li>Integrar multimedia de forma accesible</li>
+      </ul>
 
-  <h3>Video</h3>
-  <video controls width="600">
-    <source src="assets/video/video1.mp4" type="video/mp4">
-    Tu navegador no soporta el elemento de video.
-  </video>
+      <h3>Beneficios</h3>
+      <ol>
+        <li>Alcance global inmediato</li>
+        <li>Actualización en tiempo real</li>
+        <li>Compatibilidad multiplataforma</li>
+      </ol>
+    </section>
 
-  <h3>Enlaces</h3>
-  <p>Visita mi otro proyecto: <a href="https://ejemplo.com" target="_blank">Abrir ejemplo.com en una nueva pestaña</a></p>
+    <section id="tecnologias">
+      <h2>Tecnologías Esenciales</h2>
+      
+      <article>
+        <h3>HTML, CSS y JavaScript</h3>
+        <p>La base del desarrollo web moderno. <strong>HTML</strong> define la estructura, <em>CSS</em> el estilo, y <strong>JavaScript</strong> el comportamiento.</p>
+        
+        <h3>Multimedia en la Web</h3>
+        <p>A continuación, se muestra una imagen y un video de ejemplo:</p>
+        
+        <img src="assets/img/imagen1.jpg" alt="Diseño de interfaz de usuario en desarrollo web" />
+        
+        <video controls width="600">
+          <source src="assets/video/video1.mp4" type="video/mp4">
+          Tu navegador no soporta el elemento de video.
+        </video>
+      </article>
+    </section>
+
+    <section id="proyectos">
+      <h2>Proyectos de Aprendizaje</h2>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Proyecto</th>
+            <th>Nivel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Landing Page Personal</td>
+            <td>Principiante</td>
+          </tr>
+          <tr>
+            <td>Aplicación de Tareas</td>
+            <td>Intermedio</td>
+          </tr>
+          <tr>
+            <td>API + Frontend</td>
+            <td>Avanzado</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Recursos Externos</h3>
+      <p>Visita la documentación oficial en:  
+        <a href="https://developer.mozilla.org/es/" target="_blank">MDN Web Docs</a> (se abre en nueva pestaña).
+      </p>
+    </section>
+
+    <section id="contacto">
+      <h2>Formulario de Contacto</h2>
+      <form>
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="correo">Correo electrónico:</label><br>
+        <input type="email" id="correo" name="correo" required><br><br>
+
+        <input type="submit" value="Enviar">
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Diego Murillo - Desarrollo de Aplicaciones Web. Todos los derechos reservados.</p>
+  </footer>
 </body>
 </html>
