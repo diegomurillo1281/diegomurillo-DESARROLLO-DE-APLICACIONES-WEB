@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turismo en Guayaquil - Explorando el Puerto Principal</title> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <h1>SITIOS DE TURISMO EN GUAYAQUIL</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#introduccion">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#seccion-principal">Lugares</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#formulario">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="container py-4 bg-light shadow-sm mb-5" id="introduccion">
+        <h2 class="text-center text-primary mb-3">Guayaquil: La Perla del Pacífico y su Historia</h2>
+        <p class="lead text-center">
+            Fundada en 1534, Guayaquil, la ciudad más grande y poblada de Ecuador, es el principal puerto comercial del país. 
+            Su historia ha estado marcada por incendios devastadores y una constante renovación, lo que le ha valido el apodo de la **"Perla del Pacífico"**. 
+            Los sitios turísticos modernos como el Malecón 2000 y el Cerro Santa Ana simbolizan esta capacidad de resurgir, 
+            convirtiéndose hoy en día en emblemas de su identidad y progreso.
+        </p>
+    </section>
+
+    <main class="container my-5">
+
+        <section id="seccion-principal" class="mb-5">
+            <h2 class="text-center mb-4">Descubre los Atractivos del Puerto Principal</h2>
+            <div class="row g-4">
+                
+                <div class="col-12 col-md-4">
+                    <div class="card shadow-lg servicio-card">
+                        <img src="assets/img/malecon2000.jpg" class="card-img-top img-fluid" alt="Malecón 2000">
+                        <div class="card-body">
+                            <h3 class="card-title">Malecón 2000</h3>
+                            <p class="card-text">Un majestuoso proyecto de regeneración urbana a lo largo del Río Guayas, con jardines, museos, y miradores.</p>
+                            <a href="https://es.wikipedia.org/wiki/Malec%C3%B3n_2000" target="_blank" class="btn btn-primary boton-animado">Explorar Sitios</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-4">
+                    <div class="card shadow-lg servicio-card">
+                        <img src="assets/img/cerro_santa_ana.jpg" class="card-img-top img-fluid" alt="Cerro Santa Ana">
+                        <div class="card-body">
+                            <h3 class="card-title">Cerro Santa Ana (444 Escalones)</h3>
+                            <p class="card-text">Sube los 444 escalones para disfrutar de una vista panorámica, visitar el faro y la Capilla de Santa Ana.</p>
+                            <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#detalle2" aria-expanded="false" aria-controls="detalle2">
+                                Curiosidades
+                            </button>
+                            <div class="collapse mt-2" id="detalle2">
+                                <div class="card card-body text-success">
+                                    <p class="mb-1"><strong>Dato Histórico:</strong> El Cerro Santa Ana fue el primer asentamiento español de la ciudad en 1547. La cima alberga el faro, construido en 2002, y ofrece una vista de 360 grados de la ciudad y el río.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-4">
+                    <div class="card shadow-lg servicio-card">
+                        <img src="assets/img/parque_historico.jpg" class="card-img-top img-fluid" alt="Parque Histórico">
+                        <div class="card-body">
+                            <h3 class="card-title">Parque Histórico Guayaquil</h3>
+                            <p class="card-text">Un santuario de la flora, fauna y arquitectura tradicional de la costa ecuatoriana. ¡Verás monos y cocodrilos!</p>
+                            <a href="https://es.wikipedia.org/wiki/Parque_Hist%C3%B3rico_de_Guayaquil" target="_blank" class="btn btn-primary boton-animado">Saber Más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <hr>
+
+        <section id="formulario" class="py-5">
+            <h2 class="text-center mb-4">Contáctanos para tu Viaje</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Tu nombre completo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="comentarios" class="form-label">Comentarios / Consulta</label>
+                            <textarea class="form-control" id="comentarios" rows="4" placeholder="Escribe aquí tu consulta de viaje..."></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg boton-animado">Enviar Mensaje</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-light text-center">
+        <div class="container">
+            <span class="text-muted">Desarrollado por: <strong>DIEGO JAIME MURILLO ORDEÑAMA</strong></span>
+            <br>
+            <span class="text-muted">Afiliación: UNIVERSIDAD ESTATAL AMAZONICA</span>
+            <div class="mt-2">
+                <a href="mailto:diegojaimemurillordenana@gmail.com" class="text-decoration-none mx-2">
+                    diegojaimemurillordenana@gmail.com
+                </a> | 
+                <a href="tel:0995921049" class="text-decoration-none mx-2">
+                    0995921049
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

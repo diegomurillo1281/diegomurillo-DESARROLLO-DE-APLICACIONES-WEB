@@ -1,0 +1,61 @@
+/*
+ * Archivo: styles.css
+ * Aplicación de CSS3 Avanzado (Transiciones, Transform, Media Queries)
+ * Requisitos: Sombra, Borde Redondeado, Animación :hover
+ */
+
+/* 1. Sobrescribir Estilo de Botón Primario (btn btn-primary) */
+.btn-primary {
+    background-color: #007bff; /* Color base */
+    border-color: #007bff;
+    border-radius: 10px; /* Borde redondeado */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+    transition: all 0.3s ease; /* Transición para la animación */
+}
+
+/* 2. Animación con :hover y transform (Clase .boton-animado) */
+.boton-animado:hover {
+    background-color: #0056b3; 
+    border-color: #0056b3;
+    transform: translateY(-3px) scale(1.05); /* Elevación y ligero aumento de tamaño */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+
+/* 3. Estilos de Card con Sombra y Transición (modelo de cajas) */
+.servicio-card {
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    border-radius: 15px;
+}
+
+.servicio-card:hover {
+    transform: scale(1.03); /* Ligeramente más grande al pasar el ratón */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25) !important; 
+}
+
+/* 4. Estilo de Imagen con 'object-fit' para mejor visualización */
+.card-img-top {
+    height: 200px;
+    object-fit: cover; /* Recorta la imagen para que cubra el área sin distorsionarse */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* 5. Media Query Propia (Responsividad Avanzada) */
+@media (max-width: 576px) {
+    /* Cambiar el color del navbar en móviles */
+    .navbar-dark.bg-dark {
+        background-color: #3d3d3d !important; 
+        border-bottom: 3px solid #f9c74f; /* Cambio de color en pantalla pequeña */
+    }
+
+    /* Reducir el tamaño de fuente del h1 principal */
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Modificar el color de fondo del footer */
+    .footer {
+        background-color: #f0f8ff !important; 
+        border-top: 2px solid #007bff;
+    }
+}
