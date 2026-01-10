@@ -1,62 +1,53 @@
-// Referencias a los elementos del DOM
+// Referencias al DOM
 const imageUrlInput = document.getElementById('imageUrl');
 const addBtn = document.getElementById('addBtn');
 const deleteBtn = document.getElementById('deleteBtn');
 const gallery = document.getElementById('gallery');
 
-/**
- * Función para agregar una imagen a la galería
- */
+// 1. Función para agregar imagen
 addBtn.addEventListener('click', () => {
-    const url = imageUrlInput.value.trim();
+    const url = imageUrlInput.value;
 
     if (url === "") {
-        alert("Por favor, ingresa una URL de imagen válida.");
+        alert("Por favor, ingresa una URL válida.");
         return;
     }
 
-    // Crear el elemento de imagen
+    // Crear elemento img
     const newImg = document.createElement('img');
     newImg.src = url;
-    newImg.alt = "Imagen de galería";
+    newImg.alt = "Imagen de la galería";
 
     // Evento para seleccionar la imagen
     newImg.addEventListener('click', function() {
-        // Buscar si ya hay una imagen seleccionada y quitarle la clase
+        // Quitar la clase 'selected' de cualquier otra imagen
         const currentSelected = document.querySelector('.selected');
-        
-        if (currentSelected && currentSelected !== this) {
+        if (currentSelected) {
             currentSelected.classList.remove('selected');
         }
-
-        // Alternar selección en la imagen actual
+        // Añadir a la imagen actual
         this.classList.toggle('selected');
     });
 
-    // Añadir la imagen al contenedor y limpiar el input
+    // Agregar a la galería y limpiar input
     gallery.appendChild(newImg);
     imageUrlInput.value = "";
 });
 
-/**
- * Función para eliminar la imagen seleccionada
- */
-const eliminarImagen = () => {
+// 2. Función para eliminar imagen seleccionada
+deleteBtn.addEventListener('click', () => {
     const selectedImg = document.querySelector('.selected');
     if (selectedImg) {
         selectedImg.remove();
     } else {
-        alert("Por favor, selecciona una imagen primero haciendo clic en ella.");
+        alert("Selecciona una imagen primero haciendo clic en ella.");
     }
-};
+});
 
-// Evento para el botón de eliminar
-deleteBtn.addEventListener('click', eliminarImagen);
-
-// Manejo de eventos de teclado (Atajos)
+// 3. Atajos de teclado (Keydown)
 document.addEventListener('keydown', (event) => {
-    // Si se presiona la tecla "Delete" (Suprimir) o "Backspace" (Retroceso)
     if (event.key === "Delete" || event.key === "Backspace") {
-        eliminarImagen();
+        const selectedImg = document.querySelector('.selected');
+        if (selectedImg) selectedImg.remove();
     }
 });
