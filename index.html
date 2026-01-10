@@ -4,57 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Turismo en Guayaquil - Diego Murillo</title>
-    <link rel="stylesheet" href="style_guayaquil.css">
+    <style>
+        /* Estilos integrados para evitar errores de archivos faltantes */
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f0f2f5; color: #333; line-height: 1.6; }
+        nav { background: #2c3e50; padding: 15px; position: sticky; top: 0; z-index: 1000; }
+        nav ul { list-style: none; display: flex; justify-content: center; gap: 30px; margin: 0; padding: 0; }
+        nav a { color: white; text-decoration: none; font-weight: bold; }
+        nav a:hover { color: #3498db; }
+        .hero { background: #3498db; color: white; padding: 60px 20px; text-align: center; }
+        .container { max-width: 1000px; margin: auto; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
+        .card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 200px; object-fit: cover; }
+        .card-content { padding: 15px; }
+        form { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 40px; }
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        button { background: #27ae60; color: white; border: none; padding: 15px 30px; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; }
+        button:hover { background: #219150; }
+        footer { background: #2c3e50; color: white; text-align: center; padding: 20px; margin-top: 40px; }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#introduccion">Inicio</a></li>
-                <li><a href="#lugares">Lugares</a></li>
-                <li><a href="TAREA%20SEMANA%205/index.html" style="color: #2ecc71; font-weight: bold;">VER TAREA SEMANA 5</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#lugares">Lugares</a></li>
+            <li><a href="TAREA%20SEMANA%205/index.html" style="background:#27ae60; padding:5px 10px; border-radius:5px;">Ir a Tarea Semana 5</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <div id="inicio" class="hero">
         <h1>Guayaquil: La Perla del Pacífico</h1>
-    </header>
+        <p>Descubre la ciudad más vibrante y puerto principal del Ecuador.</p>
+    </div>
 
-    <section id="introduccion">
-        <p>Fundada en 1534, Guayaquil es el principal puerto comercial de Ecuador. Un símbolo de progreso y regeneración urbana.</p>
-    </section>
-
-    <section id="lugares" class="contenedor-lugares">
-        <div class="tarjeta">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Malecon_2000_Guayaquil_Ecuador.jpg/800px-Malecon_2000_Guayaquil_Ecuador.jpg" alt="Malecón 2000">
-            <h3>Malecón 2000</h3>
-            <p>Un paseo histórico junto al río Guayas.</p>
+    <div id="lugares" class="container">
+        <h2>Atractivos del Puerto Principal</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Malecon_2000_Guayaquil_Ecuador.jpg/800px-Malecon_2000_Guayaquil_Ecuador.jpg" alt="Malecón 2000">
+                <div class="card-content">
+                    <h3>Malecón 2000</h3>
+                    <p>Un majestuoso proyecto de regeneración urbana junto al Río Guayas.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Cerro_Santa_Ana_Guayaquil.jpg/800px-Cerro_Santa_Ana_Guayaquil.jpg" alt="Cerro Santa Ana">
+                <div class="card-content">
+                    <h3>Cerro Santa Ana</h3>
+                    <p>Suba los 444 escalones para ver la historia de Guayaquil desde el faro.</p>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <div class="tarjeta">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Cerro_Santa_Ana_Guayaquil.jpg/800px-Cerro_Santa_Ana_Guayaquil.jpg" alt="Cerro Santa Ana">
-            <h3>Cerro Santa Ana</h3>
-            <p>El barrio más antiguo con 444 escalones y vistas increíbles.</p>
-        </div>
-
-        <div class="tarjeta">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Parque_Historico_Guayaquil_01.jpg/800px-Parque_Historico_Guayaquil_01.jpg" alt="Parque Histórico">
-            <h3>Parque Histórico</h3>
-            <p>Reserva de vida silvestre y arquitectura colonial.</p>
-        </div>
-    </section>
-
-    <section id="contacto">
-        <h2>Contáctanos</h2>
+    <div id="contacto" class="container">
         <form>
-            <input type="text" placeholder="Nombre">
-            <input type="email" placeholder="Correo">
-            <textarea placeholder="Tu mensaje"></textarea>
-            <button type="submit">Enviar</button>
+            <h2>Contáctanos para tu Viaje</h2>
+            <input type="text" placeholder="Tu Nombre">
+            <input type="email" placeholder="Tu Email">
+            <textarea placeholder="Comentarios / Consulta" rows="4"></textarea>
+            <button type="submit">Enviar Mensaje</button>
         </form>
-    </section>
+    </div>
 
     <footer>
         <p>Desarrollado por: <strong>DIEGO JAIME MURILLO ORDEÑAMA</strong></p>
+        <p>UNIVERSIDAD ESTATAL AMAZONICA</p>
     </footer>
 </body>
 </html>
