@@ -1,37 +1,11 @@
-const gallery = document.getElementById("gallery");
 const imageUrlInput = document.getElementById("imageUrl");
 const addBtn = document.getElementById("addBtn");
 const deleteBtn = document.getElementById("deleteBtn");
+const gallery = document.getElementById("gallery");
 
 let selectedImage = null;
 
-// 🔹 IMÁGENES LOCALES PRECARGADAS
-const imagenesIniciales = [
-    "assets/img/cerro_santa_ana.jpg",
-    "assets/img/malecon2000.jpg",
-    "assets/img/parque_historico.jpg"
-];
-
-// 🔹 FUNCIÓN PARA CREAR IMÁGENES
-function crearImagen(src) {
-    const img = document.createElement("img");
-    img.src = src;
-
-    img.addEventListener("click", () => {
-        if (selectedImage) {
-            selectedImage.classList.remove("selected");
-        }
-        selectedImage = img;
-        img.classList.add("selected");
-    });
-
-    gallery.appendChild(img);
-}
-
-// 🔹 CARGAR IMÁGENES LOCALES AL INICIO
-imagenesIniciales.forEach(src => crearImagen(src));
-
-// 🔹 AGREGAR IMAGEN DESDE URL
+// Agregar imagen
 addBtn.addEventListener("click", () => {
     const url = imageUrlInput.value.trim();
 
@@ -40,11 +14,22 @@ addBtn.addEventListener("click", () => {
         return;
     }
 
-    crearImagen(url);
+    const img = document.createElement("img");
+    img.src = url;
+
+    img.addEventListener("click", () => {
+        if (selectedImage) {
+            selectedImage.classList.remove("selected");
+        }
+        img.classList.add("selected");
+        selectedImage = img;
+    });
+
+    gallery.appendChild(img);
     imageUrlInput.value = "";
 });
 
-// 🔹 ELIMINAR IMAGEN SELECCIONADA
+// Eliminar imagen seleccionada
 deleteBtn.addEventListener("click", () => {
     if (!selectedImage) {
         alert("Selecciona una imagen primero");
@@ -54,3 +39,4 @@ deleteBtn.addEventListener("click", () => {
     gallery.removeChild(selectedImage);
     selectedImage = null;
 });
+
