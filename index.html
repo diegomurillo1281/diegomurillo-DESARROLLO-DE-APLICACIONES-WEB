@@ -5,55 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Turismo en Guayaquil - Diego Murillo</title>
     <style>
-        /* Estilos integrados para evitar errores de archivos faltantes */
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f0f2f5; color: #333; line-height: 1.6; }
+        /* ESTILOS PARA QUE SE VEA PERFECTO */
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background-color: #f4f7f6; color: #333; }
+        
         nav { background: #2c3e50; padding: 15px; position: sticky; top: 0; z-index: 1000; }
-        nav ul { list-style: none; display: flex; justify-content: center; gap: 30px; margin: 0; padding: 0; }
-        nav a { color: white; text-decoration: none; font-weight: bold; }
-        nav a:hover { color: #3498db; }
+        nav ul { list-style: none; display: flex; justify-content: center; gap: 20px; margin: 0; padding: 0; }
+        nav a { color: white; text-decoration: none; font-weight: bold; padding: 8px 15px; border-radius: 5px; }
+        nav a:hover { background: #34495e; }
+        .btn-tarea { background: #2ecc71; color: black !important; }
+
         .hero { background: #3498db; color: white; padding: 60px 20px; text-align: center; }
-        .container { max-width: 1000px; margin: auto; padding: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
-        .card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .card img { width: 100%; height: 200px; object-fit: cover; }
+        
+        .container { max-width: 1000px; margin: 20px auto; padding: 20px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; }
+        .card img { width: 100%; height: 200px; object-fit: cover; background: #ddd; }
         .card-content { padding: 15px; }
-        form { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 40px; }
+
+        form { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 30px; }
         input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
-        button { background: #27ae60; color: white; border: none; padding: 15px 30px; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; }
-        button:hover { background: #219150; }
+        button { background: #27ae60; color: white; border: none; padding: 15px; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; font-weight: bold; }
+        
         footer { background: #2c3e50; color: white; text-align: center; padding: 20px; margin-top: 40px; }
     </style>
 </head>
 <body>
+
     <nav>
         <ul>
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#lugares">Lugares</a></li>
-            <li><a href="TAREA%20SEMANA%205/index.html" style="background:#27ae60; padding:5px 10px; border-radius:5px;">Ir a Tarea Semana 5</a></li>
+            <li><a href="TAREA%20SEMANA%205/index.html" class="btn-tarea">VER TAREA SEMANA 5</a></li>
             <li><a href="#contacto">Contacto</a></li>
         </ul>
     </nav>
 
     <div id="inicio" class="hero">
         <h1>Guayaquil: La Perla del Pacífico</h1>
-        <p>Descubre la ciudad más vibrante y puerto principal del Ecuador.</p>
+        <p>El puerto principal del Ecuador y su historia vibrante.</p>
     </div>
 
     <div id="lugares" class="container">
-        <h2>Atractivos del Puerto Principal</h2>
+        <h2>Atractivos Turísticos</h2>
         <div class="grid">
             <div class="card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Malecon_2000_Guayaquil_Ecuador.jpg/800px-Malecon_2000_Guayaquil_Ecuador.jpg" alt="Malecón 2000">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Malecon_2000_Guayaquil_Ecuador.jpg/640px-Malecon_2000_Guayaquil_Ecuador.jpg" alt="Malecón 2000">
                 <div class="card-content">
                     <h3>Malecón 2000</h3>
-                    <p>Un majestuoso proyecto de regeneración urbana junto al Río Guayas.</p>
+                    <p>Un paseo histórico y moderno junto al Río Guayas.</p>
                 </div>
             </div>
+
             <div class="card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Cerro_Santa_Ana_Guayaquil.jpg/800px-Cerro_Santa_Ana_Guayaquil.jpg" alt="Cerro Santa Ana">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Cerro_Santa_Ana_Guayaquil.jpg/640px-Cerro_Santa_Ana_Guayaquil.jpg" alt="Cerro Santa Ana">
                 <div class="card-content">
                     <h3>Cerro Santa Ana</h3>
-                    <p>Suba los 444 escalones para ver la historia de Guayaquil desde el faro.</p>
+                    <p>El origen de la ciudad con sus famosos 444 escalones.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Parque_Historico_Guayaquil_01.jpg/640px-Parque_Historico_Guayaquil_01.jpg" alt="Parque Histórico">
+                <div class="card-content">
+                    <h3>Parque Histórico</h3>
+                    <p>Naturaleza y arquitectura antigua de Guayaquil.</p>
                 </div>
             </div>
         </div>
@@ -61,10 +77,10 @@
 
     <div id="contacto" class="container">
         <form>
-            <h2>Contáctanos para tu Viaje</h2>
+            <h2>Contáctanos</h2>
             <input type="text" placeholder="Tu Nombre">
-            <input type="email" placeholder="Tu Email">
-            <textarea placeholder="Comentarios / Consulta" rows="4"></textarea>
+            <input type="email" placeholder="Tu Correo">
+            <textarea placeholder="¿En qué podemos ayudarte?" rows="4"></textarea>
             <button type="submit">Enviar Mensaje</button>
         </form>
     </div>
@@ -73,5 +89,6 @@
         <p>Desarrollado por: <strong>DIEGO JAIME MURILLO ORDEÑAMA</strong></p>
         <p>UNIVERSIDAD ESTATAL AMAZONICA</p>
     </footer>
+
 </body>
 </html>
