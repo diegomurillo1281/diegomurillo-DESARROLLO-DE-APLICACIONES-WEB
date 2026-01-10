@@ -1,61 +1,81 @@
-/*
- * Archivo: styles.css
- * Aplicación de CSS3 Avanzado (Transiciones, Transform, Media Queries)
- * Requisitos: Sombra, Borde Redondeado, Animación :hover
- */
-
-/* 1. Sobrescribir Estilo de Botón Primario (btn btn-primary) */
-.btn-primary {
-    background-color: #007bff; /* Color base */
-    border-color: #007bff;
-    border-radius: 10px; /* Borde redondeado */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
-    transition: all 0.3s ease; /* Transición para la animación */
+/* Configuración General */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #f8d7da, #ffffff);
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    min-height: 100vh;
 }
 
-/* 2. Animación con :hover y transform (Clase .boton-animado) */
-.boton-animado:hover {
-    background-color: #0056b3; 
-    border-color: #0056b3;
-    transform: translateY(-3px) scale(1.05); /* Elevación y ligero aumento de tamaño */
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+header h1 {
+    color: #333;
 }
 
-/* 3. Estilos de Card con Sombra y Transición (modelo de cajas) */
-.servicio-card {
-    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
-    border-radius: 15px;
+/* Contenedor de Controles */
+.controles {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
-.servicio-card:hover {
-    transform: scale(1.03); /* Ligeramente más grande al pasar el ratón */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25) !important; 
+input[type="url"] {
+    padding: 12px;
+    width: 350px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
 }
 
-/* 4. Estilo de Imagen con 'object-fit' para mejor visualización */
-.card-img-top {
-    height: 200px;
-    object-fit: cover; /* Recorta la imagen para que cubra el área sin distorsionarse */
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+/* Botones Verdes según tu imagen */
+.boton-verde {
+    background-color: #2ecc71;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* 5. Media Query Propia (Responsividad Avanzada) */
-@media (max-width: 576px) {
-    /* Cambiar el color del navbar en móviles */
-    .navbar-dark.bg-dark {
-        background-color: #3d3d3d !important; 
-        border-bottom: 3px solid #f9c74f; /* Cambio de color en pantalla pequeña */
-    }
+.boton-verde:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+}
 
-    /* Reducir el tamaño de fuente del h1 principal */
-    h1 {
-        font-size: 1.5rem;
-    }
+/* Galería con CSS Grid */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-    /* Modificar el color de fondo del footer */
-    .footer {
-        background-color: #f0f8ff !important; 
-        border-top: 2px solid #007bff;
-    }
+.gallery-container img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: pointer;
+    border: 5px solid transparent; /* Espacio reservado para el borde */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Estilo de Imagen Seleccionada */
+.selected {
+    border: 5px solid #3498db !important; /* Borde azul grueso */
+    box-shadow: 0 0 20px rgba(52, 152, 219, 0.8) !important;
+    transform: scale(1.05);
+}
+
+footer {
+    margin-top: 50px;
+    font-size: 0.9em;
+    color: #555;
 }
