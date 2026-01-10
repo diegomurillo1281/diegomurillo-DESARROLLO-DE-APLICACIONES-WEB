@@ -3,47 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turismo en Guayaquil - Explorando el Puerto Principal</title>
-    <link rel="stylesheet" href="style_guayaquil.css"> </head>
+    <title>Turismo en Guayaquil - Diego Murillo</title>
+    <link rel="stylesheet" href="style_guayaquil.css">
+</head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#introduccion">Inicio</a></li>
-            <li><a href="#seccion-principal">Lugares</a></li>
-            <li><a href="TAREA%20SEMANA%205/index.html">Galería (Semana 5)</a></li> <li><a href="#formulario">Contacto</a></li>
-        </ul>
-    </nav>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#introduccion">Inicio</a></li>
+                <li><a href="#lugares">Lugares</a></li>
+                <li><a href="TAREA%20SEMANA%205/index.html" style="color: #2ecc71; font-weight: bold;">VER TAREA SEMANA 5</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <h1>Guayaquil: La Perla del Pacífico</h1>
+    </header>
 
     <section id="introduccion">
-        <h2>Guayaquil: La Perla del Pacífico y su Historia</h2>
-        <p>Fundada en 1534, Guayaquil es el principal puerto comercial del Ecuador. Conocida como la "Perla del Pacífico", destaca por su capacidad de renovación constante.</p>
+        <p>Fundada en 1534, Guayaquil es el principal puerto comercial de Ecuador. Un símbolo de progreso y regeneración urbana.</p>
     </section>
 
-    <section id="seccion-principal">
-        <h2>Atractivos del Puerto Principal</h2>
-        <div class="lugar">
+    <section id="lugares" class="contenedor-lugares">
+        <div class="tarjeta">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Malecon_2000_Guayaquil_Ecuador.jpg/800px-Malecon_2000_Guayaquil_Ecuador.jpg" alt="Malecón 2000">
             <h3>Malecón 2000</h3>
-            <p>Proyecto de regeneración urbana a lo largo del Río Guayas con jardines y museos.</p>
+            <p>Un paseo histórico junto al río Guayas.</p>
         </div>
-        <div class="lugar">
-            <h3>Cerro Santa Ana (444 Escalones)</h3>
-            <p>Ofrece una vista de 360 grados de la ciudad y el río. Es el primer asentamiento español de 1547.</p>
+
+        <div class="tarjeta">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Cerro_Santa_Ana_Guayaquil.jpg/800px-Cerro_Santa_Ana_Guayaquil.jpg" alt="Cerro Santa Ana">
+            <h3>Cerro Santa Ana</h3>
+            <p>El barrio más antiguo con 444 escalones y vistas increíbles.</p>
+        </div>
+
+        <div class="tarjeta">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Parque_Historico_Guayaquil_01.jpg/800px-Parque_Historico_Guayaquil_01.jpg" alt="Parque Histórico">
+            <h3>Parque Histórico</h3>
+            <p>Reserva de vida silvestre y arquitectura colonial.</p>
         </div>
     </section>
 
-    <section id="formulario">
-        <h2>Contáctanos para tu Viaje</h2>
+    <section id="contacto">
+        <h2>Contáctanos</h2>
         <form>
             <input type="text" placeholder="Nombre">
-            <input type="email" placeholder="Email">
-            <textarea placeholder="Comentarios / Consulta"></textarea>
-            <button type="submit">Enviar Mensaje</button>
+            <input type="email" placeholder="Correo">
+            <textarea placeholder="Tu mensaje"></textarea>
+            <button type="submit">Enviar</button>
         </form>
     </section>
 
     <footer>
         <p>Desarrollado por: <strong>DIEGO JAIME MURILLO ORDEÑAMA</strong></p>
-        <p>UNIVERSIDAD ESTATAL AMAZONICA</p>
     </footer>
 </body>
 </html>
