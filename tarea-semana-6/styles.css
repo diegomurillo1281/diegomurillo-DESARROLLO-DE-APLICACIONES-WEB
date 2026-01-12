@@ -1,0 +1,81 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+}
+
+/* Feedback Visual */
+input.invalid {
+    border-color: #e74c3c;
+    background-color: #fdf2f2;
+}
+
+input.valid {
+    border-color: #2ecc71;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    height: 18px;
+    display: block;
+    margin-top: 5px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button[type="submit"] {
+    background-color: #3498db;
+    color: white;
+}
+
+button[type="submit"]:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+button[type="reset"] {
+    background-color: #95a5a6;
+    color: white;
+}
