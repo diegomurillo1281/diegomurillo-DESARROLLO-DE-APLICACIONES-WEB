@@ -21,30 +21,28 @@
     <main>
         <section id="seccion1">
             <h2>Introducción a HTML Semántico</h2>
-            <p>Este es un párrafo de introducción. Es **importante** entender la estructura de un documento web moderno.</p>
+            <p>Este es un párrafo de introducción. Es <strong>importante</strong> entender la estructura de un documento web moderno.</p>
             
             <article>
                 <h3>Multimedia en la Web</h3>
-                <p>Aquí demostraremos cómo insertar una imagen y un video. Presta *atención* a la estructura de las rutas.</p>
+                <p>Aquí demostraremos cómo insertar una imagen y un video. Presta <em>atención</em> a la estructura de las rutas.</p>
                 
                 <h4>Imagen</h4>
-                <img src="assets/img/imagen1.jpg" alt="Descripción de una imagen relevante para el tema" style="max-width: 100%; height: auto;">
+                <img src="assets/img/imagen1.jpg" alt="Paisaje relevante" style="max-width: 100%; height: auto;">
                 
                 <h4>Video</h4>
-                <video controls width="500">
+                <video controls width="100%" style="max-width: 500px;">
                     <source src="assets/video/video1.mp4" type="video/mp4">
                     Tu navegador no soporta la etiqueta de video.
                 </video>
 
                 <h4>Enlaces</h4>
-                <p>Visita mi otro proyecto: <a href="https://www.ejemplo.com" target="_blank">Abrir ejemplo.com en una nueva pestaña</a></p>
-                
+                <p>Visita mi otro proyecto: <a href="https://www.google.com" target="_blank" rel="noopener">Abrir enlace externo</a></p>
             </article>
         </section>
         
         <section>
             <h2>Listas</h2>
-            
             <h3>Lista Desordenada (UL)</h3>
             <ul>
                 <li>Elemento de la lista 1</li>
@@ -89,22 +87,21 @@
         <section id="formulario">
             <h2>Formulario de Contacto</h2>
             <form action="#" method="POST">
-                <div>
+                <div style="margin-bottom: 10px;">
                     <label for="nombre">Nombre:</label>
                     <input type="text" id="nombre" name="nombre" required>
                 </div>
-                <div>
+                <div style="margin-bottom: 10px;">
                     <label for="correo">Correo Electrónico:</label>
                     <input type="email" id="correo" name="correo" required>
                 </div>
                 <button type="submit">Enviar Formulario</button>
             </form>
         </section>
-        
     </main>
 
     <footer>
-        <p>&copy; 2025 - Semana 3. Desarrollado con HTML Semántico.</p>
+        <p>&copy; 2025 - Semana 3. Desarrollado con HTML Semántico por Diego Murillo.</p>
     </footer>
 </body>
 </html>
