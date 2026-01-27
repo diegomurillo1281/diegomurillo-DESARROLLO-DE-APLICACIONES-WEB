@@ -1,0 +1,12 @@
+/* Estilo personalizado para la tabla */
+.table-hover tbody tr:hover {
+    background-color: #f0f8ff !important;
+    transition: 0.3s;
+}
+
+/* Ajuste del carrusel para que no sea tan alto */
+.carousel-item img {
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
