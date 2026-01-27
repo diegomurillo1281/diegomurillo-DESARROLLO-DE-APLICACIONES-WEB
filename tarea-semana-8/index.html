@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Web Interactiva - Bootstrap</title>
+    <title>Mi Tienda Interactiva | Bootstrap & JS</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">MiProyecto</a>
-            <div class="collapse navbar-collapse">
+            <a class="navbar-brand fw-bold" href="#">TECH-SHOP</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
@@ -22,59 +25,95 @@
         </div>
     </nav>
 
-    <section id="inicio" class="container mt-4">
-        <div id="carouselEx" class="carousel slide" data-bs-ride="carousel">
+    <header id="inicio">
+        <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://via.placeholder.com/1200x400?text=Slide+1" class="d-block w-100" alt="...">
+                    <img src="https://picsum.photos/id/1/1200/400" class="d-block w-100" alt="Tecnología">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Innovación al alcance</h5>
+                        <p>Descubre lo último en gadgets.</p>
+                    </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/1200x400?text=Slide+2" class="d-block w-100" alt="...">
+                    <img src="https://picsum.photos/id/2/1200/400" class="d-block w-100" alt="Hardware">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Calidad Garantizada</h5>
+                        <p>Componentes de alto rendimiento.</p>
+                    </div>
                 </div>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
         </div>
-    </section>
+    </header>
 
-    <section id="productos" class="container mt-5">
-        <h2 class="text-center mb-4">Nuestros Productos</h2>
-        <table class="table table-hover table-striped shadow-sm">
-            <thead class="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Producto</th>
-                    <th>Precio</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>01</td><td>Laptop Pro</td><td>$1200</td></tr>
-                <tr><td>02</td><td>Mouse Gaming</td><td>$45</td></tr>
-            </tbody>
-        </table>
-        <button class="btn btn-primary" onclick="mostrarAlerta()">¡Haz clic aquí!</button>
-    </section>
+    <main class="container my-5">
+        <div id="productos" class="mb-5">
+            <h2 class="text-center mb-4">Catálogo de Productos</h2>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle custom-table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Producto</th>
+                            <th>Stock</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Monitor Gamer 4K</td><td>15</td><td>$450.00</td></tr>
+                        <tr><td>2</td><td>Teclado Mecánico</td><td>30</td><td>$85.00</td></tr>
+                        <tr><td>3</td><td>Auriculares Pro</td><td>10</td><td>$120.00</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center mt-3">
+                <button class="btn btn-warning fw-bold btn-neon" onclick="mostrarAlerta()">Obtener Descuento Especial</button>
+            </div>
+        </div>
 
-    <section id="contacto" class="container mt-5 mb-5 p-4 bg-light rounded shadow">
-        <h3>Contacto</h3>
-        <form id="contactForm">
-            <div class="mb-3">
-                <label class="form-label">Nombre</label>
-                <input type="text" id="nombre" class="form-control" required>
+        <div id="contacto" class="row justify-content-center">
+            <div class="col-md-6 border p-4 rounded shadow-sm bg-white">
+                <h3 class="text-center mb-4">Contáctanos</h3>
+                <form id="contactForm" novalidate>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre Completo</label>
+                        <input type="text" class="form-control" id="nombre" required>
+                        <div class="invalid-feedback">Por favor, ingresa tu nombre.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="email" required>
+                        <div class="invalid-feedback">Ingresa un correo válido.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mensaje" class="form-label">Mensaje</label>
+                        <textarea class="form-control" id="mensaje" rows="4" required></textarea>
+                        <div class="invalid-feedback">El mensaje no puede estar vacío.</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Enviar Formulario</button>
+                </form>
+                <div id="mensajeExito" class="alert alert-success mt-3 d-none">¡Mensaje enviado correctamente!</div>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Correo Electrónico</label>
-                <input type="email" id="email" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Mensaje</label>
-                <textarea id="mensaje" class="form-control" rows="3" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-success w-100">Enviar Mensaje</button>
-            <div id="errorMsg" class="text-danger mt-2"></div>
-        </form>
-    </section>
+        </div>
+    </main>
 
-    <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2026 - Mi Proyecto de Programación | Síguenos en Redes</p>
+    <footer class="bg-dark text-white pt-4 pb-2">
+        <div class="container text-center">
+            <p>Contacto: info@techshop.com | Tel: +123 456 789</p>
+            <div class="mb-3">
+                <a href="#" class="text-white me-3 text-decoration-none">Facebook</a>
+                <a href="#" class="text-white me-3 text-decoration-none">Instagram</a>
+                <a href="#" class="text-white text-decoration-none">Twitter</a>
+            </div>
+            <hr>
+            <p><small>&copy; 2026 Tech-Shop - Todos los derechos reservados.</small></p>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

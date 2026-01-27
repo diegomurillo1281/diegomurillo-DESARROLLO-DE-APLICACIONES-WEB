@@ -1,12 +1,34 @@
-/* Estilo personalizado para la tabla */
-.table-hover tbody tr:hover {
-    background-color: #f0f8ff !important;
-    transition: 0.3s;
+/* Suavizar el scroll al hacer clic en el menú */
+html {
+    scroll-behavior: smooth;
 }
 
-/* Ajuste del carrusel para que no sea tan alto */
-.carousel-item img {
-    max-height: 400px;
-    object-fit: cover;
+/* Toque personal: Tabla personalizada */
+.custom-table {
+    border: 2px solid #343a40;
     border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Animación Neón para el botón */
+.btn-neon {
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.btn-neon:hover {
+    box-shadow: 0 0 15px #ffc107;
+    transform: scale(1.1);
+}
+
+/* Ajuste de imágenes del carrusel para responsividad */
+.carousel-item img {
+    height: 60vh; /* Se adapta al alto de pantalla */
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .carousel-item img {
+        height: 40vh;
+    }
 }
