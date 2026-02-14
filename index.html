@@ -1,157 +1,24 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Mis Tareas - Diego Murillo</title>
-</head>
-<body>
-    <h1>Portafolio de Desarrollo Web</h1>
-    <ul>
-        <li><a href="semana-01/index.html">Semana 1: Galería Interactiva con JS</a></li>
-    </ul>
-</body>
-</html>
-=======
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galería Interactiva - Semana 4</title>
-
-    <!-- CSS propio -->
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-
-<header>
-    <h1>Mi Galería Dinámica</h1>
-    <p>Agrega imágenes por URL o usa las imágenes locales</p>
-</header>
-
-<main>
-
-    <!-- CONTROLES DE LA GALERÍA -->
-    <div class="controls">
-        <input type="url" id="imageUrl" placeholder="https://ejemplo.com/imagen.jpg">
-        <button id="addBtn">Agregar Imagen</button>
-        <button id="deleteBtn" class="btn-danger">Eliminar Seleccionada</button>
-    </div>
-
-    <!-- GALERÍA DINÁMICA -->
-    <div id="gallery" class="gallery-container"></div>
-
-    <!-- GRID BOOTSTRAP (3 COLUMNAS) -->
-    <div class="container my-5">
-        <div class="row">
-
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="https://picsum.photos/400/250?1" class="card-img-top img-fluid" alt="Imagen 1">
-                    <div class="card-body">
-                        <h3 class="card-title">Columna 1</h3>
-                        <p class="card-text">
-                            Ejemplo de contenido usando el sistema de grid de Bootstrap.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="https://picsum.photos/400/250?2" class="card-img-top img-fluid" alt="Imagen 2">
-                    <div class="card-body">
-                        <h3 class="card-title">Columna 2</h3>
-                        <p class="card-text">
-                            Uso de cards con imágenes responsivas y texto descriptivo.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="https://picsum.photos/400/250?3" class="card-img-top img-fluid" alt="Imagen 3">
-                    <div class="card-body">
-                        <h3 class="card-title">Columna 3</h3>
-                        <p class="card-text">
-                            Grid de tres columnas utilizando la clase col-md-4.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
+{% extends "base.html" %}
+{% block content %}
+    <h2>Nueva Colección 2026</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=150" alt="Camiseta">
+            <h3>Camiseta Blanca Essential</h3>
+            <p>$25.00</p>
+            <button>Añadir al carrito</button>
+        </div>
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=150" alt="Jeans">
+            <h3>Jeans Denim Blue</h3>
+            <p>$45.00</p>
+            <button>Añadir al carrito</button>
+        </div>
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=150" alt="Chaqueta">
+            <h3>Chaqueta Cuero Black</h3>
+            <p>$85.00</p>
+            <button>Añadir al carrito</button>
         </div>
     </div>
-
-    <!-- FORMULARIO RESPONSIVO -->
-    <div class="container my-5">
-        <h2 class="text-center mb-4">Formulario de Contacto</h2>
-
-        <form>
-            <div class="mb-3">
-                <label class="form-label">Nombre</label>
-                <input type="text" class="form-control" placeholder="Ingrese su nombre">
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-control" placeholder="Ingrese su email">
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Comentarios</label>
-                <textarea class="form-control" rows="4" placeholder="Escriba sus comentarios"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary">
-                Enviar
-            </button>
-        </form>
-    </div>
-
-    <!-- BOTÓN CON COLLAPSE -->
-    <div class="container my-4 text-center">
-        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#contenidoOculto">
-            Mostrar / Ocultar Información
-        </button>
-
-        <div id="contenidoOculto" class="collapse mt-3">
-            <div class="card card-body">
-                Este contenido se muestra y se oculta usando el componente
-                <strong>collapse</strong> de Bootstrap con animación.
-            </div>
-        </div>
-    </div>
-
-</main>
-
-<!-- FOOTER -->
-<footer class="text-center bg-light py-3 mt-5">
-    <p>© 2026 Mi Proyecto Web</p>
-    <a href="#">Inicio</a> |
-    <a href="#">Galería</a> |
-    <a href="#">Contacto</a>
-</footer>
-
-<!-- AUTOR DEL PROYECTO (AÑADIDO FINAL) -->
-<div class="text-center mt-3 mb-3">
-    <strong>
-        DESARROLLADO POR: DIEGO JAIME MURILLO ORDEÑANA<br>
-        DE LA UNIVERSIDAD ESTATAL AMAZÓNICA
-    </strong>
-</div>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- JS propio -->
-<script src="script.js"></script>
-
-</body>
-</html>
->>>>>>> 0b7189463ea154dce328bbfcb0fe061d14c3d237
+{% endblock %}
