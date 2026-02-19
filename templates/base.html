@@ -2,28 +2,21 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}TrendVibe Store{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>TrendVibe Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <header>
-        <nav>
-            <h1>TRENDVIBE STORE</h1>
-            <ul>
-                <li><a href="{{ url_for('home') }}">Inicio</a></li>
-                <li><a href="{{ url_for('about') }}">Acerca de</a></li>
-                <li><a href="{{ url_for('ver_producto', nombre='camiseta') }}">Productos</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+<header>
+    <h1>TRENDVIBE STORE</h1>
+</header>
 
-    <footer>
-        <p>&copy; 2026 TrendVibe - Diseñado por Diego Murillo</p>
-    </footer>
+{% block content %}
+{% endblock %}
+
+<footer>
+    <p>© 2026 TrendVibe - Diseñado por Diego Murillo</p>
+</footer>
+
 </body>
 </html>
