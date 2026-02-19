@@ -1,19 +1,28 @@
-{% extends "base.html" %}
-
-{% block title %}Productos{% endblock %}
-
-{% block content %}
 <section class="productos">
-    <h2>Nuestros Productos</h2>
-    
+    <h3>Productos Destacados</h3>
+
     <div class="productos-grid">
-        {% for producto in productos %}
+
         <div class="producto-card">
-            <h3>{{ producto.nombre }}</h3>
-            <p class="precio">${{ "%.2f"|format(producto.precio) }}</p>
-            <button>Ver Detalles</button>
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab" alt="">
+            <h4>Camiseta Blanca Essential</h4>
+            <p class="precio">$25.00</p>
+            <button>Añadir al carrito</button>
         </div>
-        {% endfor %}
+
+        <div class="producto-card">
+            <img src="https://images.unsplash.com/photo-1542272604-787c3835535d" alt="">
+            <h4>Jeans Denim Blue</h4>
+            <p class="precio">$45.00</p>
+            <button>Añadir al carrito</button>
+        </div>
+
+        <div class="producto-card">
+            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5" alt="">
+            <h4>Chaqueta Cuero Black</h4>
+            <p class="precio">$85.00</p>
+            <button>Añadir al carrito</button>
+        </div>
+
     </div>
 </section>
-{% endblock %}
