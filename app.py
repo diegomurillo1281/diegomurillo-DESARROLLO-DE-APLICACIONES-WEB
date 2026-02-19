@@ -22,5 +22,11 @@ productos = [
     {
         "id": 3,
         "nombre": "Chaqueta de Cuero Premium Rider",
-        "marca":
-] #
+        "marca": "TrendVibe",
+        "precio": 85.00,
+        "descripcion": "Chaqueta de cuero sintético premium con forro térmico y cierres reforzados.",
+        "colores": ["Negro", "Café"],
+        "tallas": ["M", "L", "XL"],
+        "stock": 5
+    }
+] # <--- Ahora sí, todo cerrado correctamente
