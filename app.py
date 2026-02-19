@@ -23,4 +23,4 @@ productos = [
         "id": 3,
         "nombre": "Chaqueta de Cuero Premium Rider",
         "marca":
-} #
+] #
