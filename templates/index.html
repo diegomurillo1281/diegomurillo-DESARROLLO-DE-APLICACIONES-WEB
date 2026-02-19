@@ -1,31 +1,28 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>TrendVibe Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>TRENDVIBE STORE</h1>
+    </header>
 
-{% block content %}
-
-<section>
-    <h2>Nueva Colección 2026</h2>
-
-    <div class="productos">
-
-        <div class="producto">
-            <h3>Camiseta Oversize</h3>
-            <p>$25.00</p>
-            <a href="#" class="btn">Ver Detalles</a>
+    <main>
+        <h2>Nueva Colección 2026</h2>
+        <div class="grid-productos">
+            {% for p in lista_productos %}
+            <article class="card">
+                <h3>{{ p.nombre }}</h3>
+                <p class="marca">{{ p.marca }}</p>
+                <p class="precio">${{ p.precio }}</p>
+                <p>Disponibles: {{ p.stock }}</p>
+                <a href="#" class="btn">Ver Detalles</a>
+            </article>
+            {% endfor %}
         </div>
-
-        <div class="producto">
-            <h3>Jeans Slim Fit</h3>
-            <p>$45.00</p>
-            <a href="#" class="btn">Ver Detalles</a>
-        </div>
-
-        <div class="producto">
-            <h3>Chaqueta de Cuero</h3>
-            <p>$85.00</p>
-            <a href="#" class="btn">Ver Detalles</a>
-        </div>
-
-    </div>
-</section>
-
-{% endblock %}
+    </main>
+</body>
+</html>
