@@ -2,21 +2,38 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>TrendVibe Store</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRENDVIBE STORE - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+    <!-- Encabezado -->
+    <header>
+        <div class="logo">
+            <h1>TRENDVIBE STORE</h1>
+        </div>
+        
+        <!-- Menú de navegación -->
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{ url_for('productos') }}">Productos</a></li>
+                <li><a href="{{ url_for('about') }}">Acerca de</a></li>
+                <li><a href="{{ url_for('factura') }}">Factura</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-    <h1>TRENDVIBE STORE</h1>
-</header>
+    <!-- Contenido principal (bloque que cambiará en cada página) -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
 
-{% block content %}
-{% endblock %}
-
-<footer>
-    <p>© 2026 TrendVibe - Diseñado por Diego Murillo</p>
-</footer>
-
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2026 TRENDVIBE STORE - Todos los derechos reservados</p>
+        <p>Desarrollado con Flask</p>
+    </footer>
 </body>
 </html>

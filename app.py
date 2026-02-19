@@ -2,40 +2,41 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-productos = [
-    {
-        "id": 1,
-        "nombre": "Camiseta Oversize Urban Black",
-        "marca": "TrendVibe",
-        "precio": 29.99,
-        "descripcion": "Camiseta oversize color negro, estilo urbano moderno.",
-        "tallas": ["S", "M", "L", "XL"],
-        "stock": 18
-    },
-    {
-        "id": 2,
-        "nombre": "Jeans Slim Fit Blue Classic",
-        "marca": "DenimPro",
-        "precio": 49.99,
-        "descripcion": "Jeans slim fit azul clásico con tela stretch.",
-        "tallas": ["28", "30", "32", "34"],
-        "stock": 12
-    },
-    {
-        "id": 3,
-        "nombre": "Chaqueta de Cuero Premium Rider",
-        "marca": "TrendVibe",
-        "precio": 85.00,
-        "descripcion": "Chaqueta de cuero sintético premium.",
-        "tallas": ["M", "L", "XL"],
-        "stock": 5
-    }
-]
-
+# Ruta principal - Ahora renderiza index.html
 @app.route('/')
-def inicio():
-    # Enviamos la lista 'productos' al archivo index.html
-    return render_template('index.html', lista_productos=productos)
+def index():
+    return render_template('index.html')
+
+# Ruta Acerca de
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+# Ruta Productos
+@app.route('/productos')
+def productos():
+    # Datos de ejemplo para productos
+    productos = [
+        {'nombre': 'Camiseta Oversize', 'precio': 25.00, 'imagen': 'camiseta.jpg'},
+        {'nombre': 'Jeans Slim Fit', 'precio': 45.00, 'imagen': 'jeans.jpg'},
+        {'nombre': 'Chaqueta de Cuero', 'precio': 85.00, 'imagen': 'chaqueta.jpg'}
+    ]
+    return render_template('productos.html', productos=productos)
+
+# Ruta Factura (ejemplo)
+@app.route('/factura')
+def factura():
+    # Datos de ejemplo para una factura
+    factura_data = {
+        'cliente': 'Juan Pérez',
+        'fecha': '2026-02-19',
+        'productos': [
+            {'nombre': 'Camiseta Oversize', 'cantidad': 2, 'precio': 25.00},
+            {'nombre': 'Jeans Slim Fit', 'cantidad': 1, 'precio': 45.00}
+        ],
+        'total': 95.00
+    }
+    return render_template('factura.html', factura=factura_data)
 
 if __name__ == '__main__':
     app.run(debug=True)

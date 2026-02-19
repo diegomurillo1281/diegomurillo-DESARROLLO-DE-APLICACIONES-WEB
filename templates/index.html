@@ -1,28 +1,31 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>TrendVibe Store</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <header>
-        <h1>TRENDVIBE STORE</h1>
-    </header>
+{% extends "base.html" %}
 
-    <main>
-        <h2>Nueva Colección 2026</h2>
-        <div class="grid-productos">
-            {% for p in lista_productos %}
-            <article class="card">
-                <h3>{{ p.nombre }}</h3>
-                <p class="marca">{{ p.marca }}</p>
-                <p class="precio">${{ p.precio }}</p>
-                <p>Disponibles: {{ p.stock }}</p>
-                <a href="#" class="btn">Ver Detalles</a>
-            </article>
-            {% endfor %}
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h2>Nueva Colección 2026</h2>
+    <p>Descubre las últimas tendencias en moda urbana</p>
+</section>
+
+<section class="destacados">
+    <h3>Productos Destacados</h3>
+    <div class="productos-grid">
+        <div class="producto">
+            <h4>Camiseta Oversize</h4>
+            <p class="precio">$25.00</p>
+            <button>Ver Detalles</button>
         </div>
-    </main>
-</body>
-</html>
+        <div class="producto">
+            <h4>Jeans Slim Fit</h4>
+            <p class="precio">$45.00</p>
+            <button>Ver Detalles</button>
+        </div>
+        <div class="producto">
+            <h4>Chaqueta de Cuero</h4>
+            <p class="precio">$85.00</p>
+            <button>Ver Detalles</button>
+        </div>
+    </div>
+</section>
+{% endblock %}

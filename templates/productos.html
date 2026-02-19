@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Productos{% endblock %}
+
+{% block content %}
+<section class="productos">
+    <h2>Nuestros Productos</h2>
+    
+    <div class="productos-grid">
+        {% for producto in productos %}
+        <div class="producto-card">
+            <h3>{{ producto.nombre }}</h3>
+            <p class="precio">${{ "%.2f"|format(producto.precio) }}</p>
+            <button>Ver Detalles</button>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
