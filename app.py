@@ -1,3 +1,9 @@
+from flask import Flask, render_template
+
+# ESTA LÍNEA ES LA QUE FALTA (La que busca Render)
+app = Flask(__name__)
+
+# Tu base de datos corregida
 productos = [
     {
         "id": 1,
@@ -29,4 +35,11 @@ productos = [
         "tallas": ["M", "L", "XL"],
         "stock": 5
     }
-] # <--- Ahora sí, todo cerrado correctamente
+]
+
+@app.route('/')
+def inicio():
+    return "¡Tienda TrendVibe en línea!"
+
+if __name__ == '__main__':
+    app.run(debug=True)
