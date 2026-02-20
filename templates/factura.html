@@ -1,41 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Factura{% endblock %}
-
 {% block content %}
-<section class="factura">
-    <h2>Factura</h2>
-    
-    <div class="factura-info">
-        <p><strong>Cliente:</strong> {{ factura.cliente }}</p>
-        <p><strong>Fecha:</strong> {{ factura.fecha }}</p>
-    </div>
-    
-    <table class="factura-tabla">
-        <thead>
-            <tr>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Precio Unitario</th>
-                <th>Subtotal</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for producto in factura.productos %}
-            <tr>
-                <td>{{ producto.nombre }}</td>
-                <td>{{ producto.cantidad }}</td>
-                <td>${{ "%.2f"|format(producto.precio) }}</td>
-                <td>${{ "%.2f"|format(producto.cantidad * producto.precio) }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="3"><strong>Total</strong></td>
-                <td><strong>${{ "%.2f"|format(factura.total) }}</strong></td>
-            </tr>
-        </tfoot>
-    </table>
-</section>
+<h2>Factura</h2>
+<p>Aquí se mostrará el detalle de la compra realizada.</p>
 {% endblock %}

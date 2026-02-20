@@ -2,33 +2,20 @@
 
 {% block content %}
 
-<section>
+{% if producto %}
     <h2>{{ producto.nombre }}</h2>
+    <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+    <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
 
-    <div class="producto">
+    <h4>Tallas disponibles:</h4>
+    <ul>
+        {% for talla in producto.tallas %}
+            <li>{{ talla }}</li>
+        {% endfor %}
+    </ul>
 
-        <p><strong>Marca:</strong> {{ producto.marca }}</p>
-        <p><strong>Precio:</strong> ${{ producto.precio }}</p>
-        <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
-
-        <p><strong>Colores disponibles:</strong>
-            {% for color in producto.colores %}
-                {{ color }}{% if not loop.last %}, {% endif %}
-            {% endfor %}
-        </p>
-
-        <p><strong>Tallas disponibles:</strong>
-            {% for talla in producto.tallas %}
-                {{ talla }}{% if not loop.last %}, {% endif %}
-            {% endfor %}
-        </p>
-
-        <p><strong>Stock disponible:</strong> {{ producto.stock }} unidades</p>
-
-        <br>
-        <a href="{{ url_for('inicio') }}" class="btn">Volver al catálogo</a>
-
-    </div>
-</section>
+{% else %}
+    <p>Producto no encontrado.</p>
+{% endif %}
 
 {% endblock %}

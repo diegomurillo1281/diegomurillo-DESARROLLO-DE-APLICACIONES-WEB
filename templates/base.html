@@ -2,142 +2,31 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRENDVIBE STORE - {% block title %}{% endblock %}</title>
-    
-    <!-- Fuentes modernas -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome para iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>TrendVibe Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="page-wrapper">
-        <!-- Header profesional -->
-        <header>
-            <div class="header-container">
-                <div class="logo">
-                    <i class="fas fa-crown"></i>
-                    <h1>TRENDVIBE <span>STORE</span></h1>
-                </div>
-                
-                <nav>
-                    <ul>
-                        <li><a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}active{% endif %}"><i class="fas fa-home"></i> Inicio</a></li>
-                        <li><a href="{{ url_for('productos') }}" class="{% if request.endpoint == 'productos' %}active{% endif %}"><i class="fas fa-tags"></i> Productos</a></li>
-                        <li><a href="{{ url_for('about') }}" class="{% if request.endpoint == 'about' %}active{% endif %}"><i class="fas fa-info-circle"></i> Acerca de</a></li>
-                        <li><a href="{{ url_for('factura') }}" class="{% if request.endpoint == 'factura' %}active{% endif %}"><i class="fas fa-file-invoice"></i> Factura</a></li>
-                    </ul>
-                </nav>
 
-                <div class="header-actions">
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Buscar productos...">
-                    </div>
-                    <div class="cart-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-badge">3</span>
-                    </div>
-                </div>
-            </div>
-        </header>
+<header>
+    <h1>TRENDVIBE STORE</h1>
+    <nav>
+        <a href="{{ url_for('inicio') }}">Inicio</a>
+        <a href="{{ url_for('productos') }}">Productos</a>
+        <a href="{{ url_for('about') }}">Acerca de</a>
+        <a href="{{ url_for('factura') }}">Factura</a>
+        <a href="{{ url_for('login') }}">Login</a>
+    </nav>
+</header>
 
-        <!-- Breadcrumb -->
-        <div class="breadcrumb-wrapper">
-            <div class="container">
-                <div class="breadcrumb">
-                    <a href="{{ url_for('index') }}">Inicio</a>
-                    {% if request.endpoint != 'index' %}
-                    <i class="fas fa-chevron-right"></i>
-                    <span>{% block breadcrumb %}{% endblock %}</span>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
 
-        <!-- Contenido principal -->
-        <main>
-            <div class="container">
-                {% block content %}{% endblock %}
-            </div>
-        </main>
+<footer>
+    <p>© 2026 TrendVibe Store</p>
+    <p>Hecho con ❤️ por Diego Murillo</p>
+</footer>
 
-        <!-- Footer profesional -->
-        <footer>
-            <div class="footer-content">
-                <div class="container">
-                    <div class="footer-grid">
-                        <div class="footer-info">
-                            <i class="fas fa-crown"></i>
-                            <h3>TRENDVIBE</h3>
-                            <p>Tu destino para la moda urbana más actual. Descubre las tendencias que marcarán el 2026.</p>
-                        </div>
-                        
-                        <div class="footer-links">
-                            <h4>Enlaces rápidos</h4>
-                            <ul>
-                                <li><a href="{{ url_for('index') }}">Inicio</a></li>
-                                <li><a href="{{ url_for('productos') }}">Productos</a></li>
-                                <li><a href="{{ url_for('about') }}">Acerca de</a></li>
-                                <li><a href="{{ url_for('factura') }}">Factura</a></li>
-                            </ul>
-                        </div>
-                        
-                        <div class="footer-contact">
-                            <h4>Contacto</h4>
-                            <ul>
-                                <li><i class="fas fa-map-marker-alt"></i> Guayas, Guayaquil</li>
-                                <li><i class="fas fa-phone"></i> 0995921049</li>
-                                <li><i class="fas fa-envelope"></i> trendvibe@gmail.com</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="footer-social">
-                            <h4>Síguenos</h4>
-                            <div class="social-icons">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-tiktok"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="container">
-                    <p>&copy; 2026 TRENDVIBE STORE - Todos los derechos reservados</p>
-                    <p class="credit">Desarrollado por DIEGO JAIME MURILLO ORDEÑANA <i class="fas fa-heart"></i></p>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <!-- Botón volver arriba -->
-    <button id="backToTop" class="back-to-top" aria-label="Volver arriba">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <script>
-        // Back to top functionality
-        const backToTop = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-        
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    </script>
 </body>
 </html>
