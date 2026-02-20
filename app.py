@@ -2,41 +2,55 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-# Ruta principal - Ahora renderiza index.html
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-# Ruta Acerca de
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-# Ruta Productos
-@app.route('/productos')
-def productos():
-    # Datos de ejemplo para productos
-    productos = [
-        {'nombre': 'Camiseta Oversize', 'precio': 25.00, 'imagen': 'camiseta.jpg'},
-        {'nombre': 'Jeans Slim Fit', 'precio': 45.00, 'imagen': 'jeans.jpg'},
-        {'nombre': 'Chaqueta de Cuero', 'precio': 85.00, 'imagen': 'chaqueta.jpg'}
-    ]
-    return render_template('productos.html', productos=productos)
-
-# Ruta Factura (ejemplo)
-@app.route('/factura')
-def factura():
-    # Datos de ejemplo para una factura
-    factura_data = {
-        'cliente': 'Juan Pérez',
-        'fecha': '2026-02-19',
-        'productos': [
-            {'nombre': 'Camiseta Oversize', 'cantidad': 2, 'precio': 25.00},
-            {'nombre': 'Jeans Slim Fit', 'cantidad': 1, 'precio': 45.00}
-        ],
-        'total': 95.00
+# Base de datos ficticia
+productos_lista = [
+    {
+        "id": 1,
+        "nombre": "Camiseta Oversize",
+        "precio": 25,
+        "descripcion": "Camiseta urbana estilo oversize 100% algodón",
+        "tallas": ["S", "M", "L", "XL"]
+    },
+    {
+        "id": 2,
+        "nombre": "Jeans Slim Fit",
+        "precio": 45,
+        "descripcion": "Jeans ajustados modernos color azul oscuro",
+        "tallas": ["30", "32", "34", "36"]
+    },
+    {
+        "id": 3,
+        "nombre": "Chaqueta de Cuero",
+        "precio": 85,
+        "descripcion": "Chaqueta premium de cuero sintético",
+        "tallas": ["M", "L", "XL"]
     }
-    return render_template('factura.html', factura=factura_data)
+]
 
-if __name__ == '__main__':
+@app.route("/")
+def inicio():
+    return render_template("index.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+@app.route("/productos")
+def productos():
+    return render_template("productos.html", productos=productos_lista)
+
+@app.route("/producto/<int:id>")
+def detalle(id):
+    producto = next((p for p in productos_lista if p["id"] == id), None)
+    return render_template("detalle.html", producto=producto)
+
+@app.route("/factura")
+def factura():
+    return render_template("factura.html")
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+if __name__ == "__main__":
     app.run(debug=True)
