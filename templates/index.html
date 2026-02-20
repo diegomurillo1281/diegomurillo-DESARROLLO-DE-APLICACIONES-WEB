@@ -1,31 +1,96 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrendVibe Store | Nueva Colección</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-{% block title %}Inicio{% endblock %}
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-crown"></i>
+                <h1>TRENDVIBE <span>STORE</span></h1>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="#"><i class="fas fa-shopping-bag"></i> Productos</a></li>
+                    <li><a href="#"><i class="fas fa-info-circle"></i> Acerca de</a></li>
+                    <li><a href="#"><i class="fas fa-file-invoice"></i> Factura</a></li>
+                </ul>
+            </nav>
 
-{% block content %}
-<section class="hero">
-    <h2>Nueva Colección 2026</h2>
-    <p>Descubre las últimas tendencias en moda urbana</p>
-</section>
+            <div class="header-actions">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar productos...">
+                </div>
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge">3</span>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<section class="destacados">
-    <h3>Productos Destacados</h3>
-    <div class="productos-grid">
-        <div class="producto">
-            <h4>Camiseta Oversize</h4>
-            <p class="precio">$25.00</p>
-            <button>Ver Detalles</button>
+    <main class="container">
+        <section class="hero">
+            <h2>Nueva Colección 2026</h2>
+            <p>Descubre las últimas tendencias en moda urbana</p>
+        </section>
+
+        <section class="productos">
+            <h3>Productos Destacados</h3>
+            <div class="productos-grid">
+                <article class="producto-card">
+                    <h4>Camiseta Oversize</h4>
+                    <p class="precio">$25.00</p>
+                    <button class="btn-detalles">Ver Detalles</button>
+                </article>
+
+                <article class="producto-card">
+                    <h4>Jeans Slim Fit</h4>
+                    <p class="precio">$45.00</p>
+                    <button class="btn-detalles">Ver Detalles</button>
+                </article>
+
+                <article class="producto-card">
+                    <h4>Chaqueta de Cuero</h4>
+                    <p class="precio">$85.00</p>
+                    <button class="btn-detalles">Ver Detalles</button>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <i class="fas fa-crown"></i>
+                    <h3>TRENDVIBE</h3>
+                    <p>Tu destino para la moda urbana más actual. Descubre las tendencias que marcarán el 2026.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Enlaces rápidos</h4>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Productos</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="producto">
-            <h4>Jeans Slim Fit</h4>
-            <p class="precio">$45.00</p>
-            <button>Ver Detalles</button>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TrendVibe Store. Hecho con <i class="fas fa-heart"></i> por Diego Murillo</p>
         </div>
-        <div class="producto">
-            <h4>Chaqueta de Cuero</h4>
-            <p class="precio">$85.00</p>
-            <button>Ver Detalles</button>
-        </div>
-    </div>
-</section>
-{% endblock %}
+    </footer>
+
+</body>
+</html>
