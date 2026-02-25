@@ -1,29 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Lista de Productos</h2>
 
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Cantidad</th>
-        <th>Precio</th>
-        <th>Acciones</th>
-    </tr>
+<section class="productos-section">
+    <h2>Productos Destacados</h2>
 
-    {% for producto in productos %}
-    <tr>
-        <td>{{ producto.get_id() }}</td>
-        <td>{{ producto.get_nombre() }}</td>
-        <td>{{ producto.get_cantidad() }}</td>
-        <td>${{ producto.get_precio() }}</td>
-        <td>
-            <a href="/editar/{{ producto.get_id() }}">Editar</a>
-            <a href="/eliminar/{{ producto.get_id() }}">Eliminar</a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+    <div class="productos-container">
+
+        {% for producto in productos %}
+        <div class="producto-card">
+            <h3>{{ producto.get_nombre() }}</h3>
+            <p><strong>Precio:</strong> ${{ producto.get_precio() }}</p>
+
+            <div class="botones">
+                <a href="/editar/{{ producto.get_id() }}" class="btn-detalle">Ver Detalle</a>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
 
 {% endblock %}
