@@ -22,7 +22,7 @@ class Producto:
 class Inventario:
 
     def __init__(self):
-        self.productos = {}  # Diccionario {id: Producto}
+        self.productos = {}
         self.conectar_db()
         self.crear_tabla()
         self.cargar_productos()
@@ -34,8 +34,12 @@ class Inventario:
         self.cursor = self.conn.cursor()
 
     def crear_tabla(self):
+        # 🔥 BORRA la tabla vieja si existe
+        self.cursor.execute("DROP TABLE IF EXISTS productos")
+
+        # ✅ Crea la tabla con la estructura correcta
         self.cursor.execute("""
-            CREATE TABLE IF NOT EXISTS productos (
+            CREATE TABLE productos (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 nombre TEXT NOT NULL,
                 cantidad INTEGER NOT NULL,
@@ -44,7 +48,7 @@ class Inventario:
         """)
         self.conn.commit()
 
-    # --------- CARGAR DESDE BD A DICCIONARIO ---------
+    # --------- CARGAR DESDE BD ---------
 
     def cargar_productos(self):
         self.cursor.execute("SELECT * FROM productos")
