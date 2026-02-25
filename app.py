@@ -63,5 +63,13 @@ def eliminar_producto(id):
     return redirect(url_for("productos"))
 
 
+# -----------------------------
+# LOGIN
+# -----------------------------
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
