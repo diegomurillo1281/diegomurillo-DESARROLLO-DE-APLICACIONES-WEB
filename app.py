@@ -67,6 +67,15 @@ def eliminar_producto(id):
     inventario.eliminar_producto(id)
     return redirect(url_for("listar_productos"))
 
+# =========================
+# LOGIN
+# =========================
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        return redirect(url_for("index"))
+    return render_template("login.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
