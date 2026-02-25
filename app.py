@@ -8,7 +8,8 @@ Producto.crear_tabla()
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    productos = Producto.obtener_todos()
+    return render_template("index.html", productos=productos)
 
 @app.route("/productos")
 def listar_productos():
