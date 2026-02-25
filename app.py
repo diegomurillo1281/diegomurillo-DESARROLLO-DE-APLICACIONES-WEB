@@ -3,9 +3,8 @@ from models import Inventario
 
 app = Flask(__name__)
 
-# Crear inventario (usa diccionario + SQLite)
+# Crear inventario
 inventario = Inventario()
-
 
 # =========================
 # INICIO
@@ -15,7 +14,6 @@ def index():
     productos = inventario.mostrar_todos()
     return render_template("index.html", productos=productos)
 
-
 # =========================
 # LISTAR PRODUCTOS
 # =========================
@@ -24,40 +22,45 @@ def listar_productos():
     productos = inventario.mostrar_todos()
     return render_template("productos.html", productos=productos)
 
-
 # =========================
-# AGREGAR
+# AGREGAR (CORREGIDO)
 # =========================
 @app.route("/agregar", methods=["GET", "POST"])
 def agregar_producto():
     if request.method == "POST":
-        nombre = request.form["nombre"]
-        cantidad = int(request.form["cantidad"])
-        precio = float(request.form["precio"])
+        # Usamos .get para evitar el "Bad Request" si falta un campo
+        nombre = request.form.get("nombre")
+        cantidad = request.form.get("cantidad")
+        precio = request.form.get("precio")
 
-        inventario.agregar_producto(nombre, cantidad, precio)
-        return redirect(url_for("listar_productos"))
+        # Validación básica: si todo existe, guardamos
+        if nombre and cantidad and precio:
+            inventario.agregar_producto(nombre, int(cantidad), float(precio))
+            return redirect(url_for("listar_productos"))
+        else:
+            return "Error: Faltan campos en el formulario", 400
 
     return render_template("agregar_producto.html")
 
-
 # =========================
-# EDITAR
+# EDITAR (CORREGIDO)
 # =========================
 @app.route("/editar/<int:id>", methods=["GET", "POST"])
 def editar_producto(id):
     producto = inventario.productos.get(id)
 
     if request.method == "POST":
-        nombre = request.form["nombre"]
-        cantidad = int(request.form["cantidad"])
-        precio = float(request.form["precio"])
+        nombre = request.form.get("nombre")
+        cantidad = request.form.get("cantidad")
+        precio = request.form.get("precio")
 
-        inventario.actualizar_producto(id, nombre, cantidad, precio)
-        return redirect(url_for("listar_productos"))
+        if nombre and cantidad and precio:
+            inventario.actualizar_producto(id, nombre, int(cantidad), float(precio))
+            return redirect(url_for("listar_productos"))
+        else:
+            return "Error: Faltan campos para editar", 400
 
     return render_template("editar_producto.html", producto=producto)
-
 
 # =========================
 # ELIMINAR
@@ -75,7 +78,6 @@ def login():
     if request.method == "POST":
         return redirect(url_for("index"))
     return render_template("login.html")
-
 
 if __name__ == "__main__":
     app.run(debug=True)
