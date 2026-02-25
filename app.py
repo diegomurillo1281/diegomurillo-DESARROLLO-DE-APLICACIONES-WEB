@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from models import Producto
 
 app = Flask(__name__)
@@ -41,6 +41,13 @@ def editar_producto(id):
 def eliminar_producto(id):
     Producto.eliminar(id)
     return redirect("/productos")
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        # Aquí luego puedes validar usuario
+        return redirect("/")
+    return render_template("login.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
