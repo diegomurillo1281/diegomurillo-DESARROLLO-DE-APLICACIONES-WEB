@@ -81,3 +81,11 @@ def login():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+# =========================
+# FACTURA
+# =========================
+@app.route("/factura")
+def factura():
+    return render_template("factura.html")

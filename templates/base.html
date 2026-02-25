@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>TIENDA DE ROPA EN LINEA ESTILO URBANO</title>
+    <meta charset="UTF-8">
+    <title>Tienda de Ropa en Línea - Estilo Urbano</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
 <header>
-    <h1>TIENDA DE ROPA EN LINEA ESTILO URBANO</h1>
+    <h1>Tienda de Ropa en Línea - Estilo Urbano</h1>
     <nav>
-        <a href="/">Inicio</a>
-        <a href="/productos">Productos</a>
-        <a href="/agregar">Agregar Producto</a>
+        <a href="{{ url_for('index') }}">Inicio</a>
+        <a href="{{ url_for('listar_productos') }}">Productos</a>
+        <a href="{{ url_for('agregar_producto') }}">Agregar Producto</a>
+        <a href="{{ url_for('factura') }}">Factura</a>
         <a href="{{ url_for('login') }}">Login</a>
     </nav>
 </header>
@@ -21,7 +23,7 @@
 </div>
 
 <footer>
-    Proyecto Flask - POO + SQLite DIEGO MURILLO
+    Proyecto Flask - POO + SQLite | Diego Murillo
 </footer>
 
 </body>
