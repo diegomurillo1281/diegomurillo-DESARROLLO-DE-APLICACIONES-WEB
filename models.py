@@ -46,21 +46,21 @@ class Inventario:
 
     # --------- CARGAR DESDE BD A DICCIONARIO ---------
 
-        def cargar_productos(self):
-    self.cursor.execute("SELECT * FROM productos")
-    filas = self.cursor.fetchall()
+    def cargar_productos(self):
+        self.cursor.execute("SELECT * FROM productos")
+        filas = self.cursor.fetchall()
 
-    for fila in filas:
-        producto = Producto(fila[0], fila[1], fila[2], fila[3])
-        self.productos[fila[0]] = producto
+        for fila in filas:
+            producto = Producto(fila[0], fila[1], fila[2], fila[3])
+            self.productos[fila[0]] = producto
 
-    # Si está vacía, insertar productos iniciales
-    if len(self.productos) == 0:
-        print("Base de datos vacía. Insertando productos iniciales...")
+        # Si está vacía, insertar productos iniciales
+        if len(self.productos) == 0:
+            print("Base de datos vacía. Insertando productos iniciales...")
 
-        self.agregar_producto("Camisa Urbana", 15, 29.99)
-        self.agregar_producto("Pantalón Slim Fit", 10, 49.99)
-        self.agregar_producto("Chaqueta Streetwear", 8, 79.99)
+            self.agregar_producto("Camisa Urbana", 15, 29.99)
+            self.agregar_producto("Pantalón Slim Fit", 10, 49.99)
+            self.agregar_producto("Chaqueta Streetwear", 8, 79.99)
 
     # --------- CRUD ---------
 
