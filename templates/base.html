@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda de Ropa en Línea - Estilo Urbano</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
@@ -14,6 +15,7 @@
         <a href="{{ url_for('listar_productos') }}">Productos</a>
         <a href="{{ url_for('agregar_producto') }}">Agregar Producto</a>
         <a href="{{ url_for('factura') }}">Factura</a>
+        <a href="{{ url_for('about') }}">Sobre Nosotros</a>
         <a href="{{ url_for('login') }}">Login</a>
     </nav>
 </header>
@@ -23,7 +25,7 @@
 </div>
 
 <footer>
-    Proyecto Flask - POO + SQLite | Diego Murillo
+    Proyecto Flask - POO + SQLite | Diego Murillo UEA
 </footer>
 
 </body>
