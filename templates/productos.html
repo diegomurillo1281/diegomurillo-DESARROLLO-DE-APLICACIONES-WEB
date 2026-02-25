@@ -2,23 +2,19 @@
 
 {% block content %}
 
-<section class="productos-section">
-    <h2>Productos Destacados</h2>
+<h2>Productos Destacados</h2>
 
-    <div class="productos-container">
+<div class="productos-grid">
+    {% for producto in productos %}
+    <div class="card">
+        <h3>{{ producto.get_nombre() }}</h3>
+        <p><strong>Precio:</strong> ${{ producto.get_precio() }}</p>
 
-        {% for producto in productos %}
-        <div class="producto-card">
-            <h3>{{ producto.get_nombre() }}</h3>
-            <p><strong>Precio:</strong> ${{ producto.get_precio() }}</p>
-
-            <div class="botones">
-                <a href="/editar/{{ producto.get_id() }}" class="btn-detalle">Ver Detalle</a>
-            </div>
-        </div>
-        {% endfor %}
-
+        <a href="/editar/{{ producto.get_id() }}" class="btn">
+            Ver Detalle
+        </a>
     </div>
-</section>
+    {% endfor %}
+</div>
 
 {% endblock %}

@@ -1,78 +1,79 @@
-:root {
-    --primary: #c5a059;
-    --dark: #121212;
-    --light: #f8fafc;
-    --white: #ffffff;
-    --gray: #64748b;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Reset básico */
 body {
-    font-family: Arial, sans-serif;
-    background-color: var(--light);
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
 }
 
+/* Header */
 header {
-    background-color: var(--dark);
-    color: var(--white);
+    background-color: #111;
+    color: white;
     padding: 20px;
 }
 
-nav {
-    margin-top: 10px;
+header h1 {
+    margin: 0;
 }
 
 nav a {
-    color: var(--white);
-    margin-right: 15px;
+    color: white;
     text-decoration: none;
+    margin-right: 15px;
 }
 
 nav a:hover {
-    color: var(--primary);
+    color: #d4af37;
 }
 
-main {
+/* Contenedor principal */
+.container {
     padding: 30px;
 }
 
-footer {
-    background-color: var(--dark);
-    color: var(--white);
-    text-align: center;
-    padding: 15px;
-    margin-top: 40px;
-}
-
-.productos-container {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
+/* Cards de productos */
 .card {
-    background: var(--white);
+    background: white;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
     width: 250px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
 }
 
+.card h3 {
+    margin-top: 0;
+}
+
+.card p {
+    margin: 10px 0;
+}
+
+/* Botones */
 .btn {
     display: inline-block;
-    margin-top: 10px;
     padding: 8px 15px;
-    background: var(--primary);
+    background-color: #d4af37;
     color: white;
     text-decoration: none;
     border-radius: 5px;
 }
 
 .btn:hover {
-    opacity: 0.8;
+    background-color: #b8962e;
+}
+
+/* Layout de productos */
+.productos-grid {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* Footer */
+footer {
+    background-color: #111;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
 }
