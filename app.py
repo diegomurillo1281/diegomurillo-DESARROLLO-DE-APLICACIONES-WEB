@@ -4,6 +4,19 @@ from models import Inventario
 app = Flask(__name__)
 inventario = Inventario()
 
+# -----------------------------
+# PRODUCTOS POR DEFECTO
+# (Solo si la base está vacía)
+# -----------------------------
+if len(list(inventario.obtener_todos())) == 0:
+    inventario.agregar_producto("Camiseta Oversize", 10, 25.0)
+    inventario.agregar_producto("Jeans Slim Fit", 5, 45.0)
+    inventario.agregar_producto("Chaqueta de Cuero", 2, 85.0)
+
+
+# -----------------------------
+# RUTAS
+# -----------------------------
 
 @app.route("/")
 def index():
