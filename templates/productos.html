@@ -1,16 +1,39 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
-<h2>Productos Destacados</h2>
 
-<div class="productos-container">
-    {% for producto in productos %}
-    <div class="card">
-        <h3>{{ producto.nombre }}</h3>
-        <p><strong>Precio:</strong> ${{ producto.precio }}</p>
-        <a href="{{ url_for('detalle', id=producto.id) }}" class="btn">Ver Detalle</a>
-    </div>
-    {% endfor %}
+<h2>Gestión de Inventario</h2>
+
+<h3>Agregar Producto</h3>
+
+<form action="{{ url_for('agregar') }}" method="POST">
+    <input type="text" name="nombre" placeholder="Nombre" required>
+    <input type="number" name="cantidad" placeholder="Cantidad" required>
+    <input type="number" step="0.01" name="precio" placeholder="Precio" required>
+    <button type="submit">Agregar</button>
+</form>
+
+<hr>
+
+<h3>Lista de Productos</h3>
+
+{% for producto in productos %}
+<div class="card">
+    <h4>{{ producto[1] }}</h4>
+    <p>Cantidad: {{ producto[2] }}</p>
+    <p>Precio: ${{ producto[3] }}</p>
+
+    <form action="{{ url_for('actualizar', id=producto[0]) }}" method="POST">
+        <input type="number" name="cantidad" placeholder="Nueva cantidad" required>
+        <input type="number" step="0.01" name="precio" placeholder="Nuevo precio" required>
+        <button type="submit">Actualizar</button>
+    </form>
+
+    <a href="{{ url_for('eliminar', id=producto[0]) }}">
+        <button>Eliminar</button>
+    </a>
 </div>
+<hr>
+{% endfor %}
 
 {% endblock %}

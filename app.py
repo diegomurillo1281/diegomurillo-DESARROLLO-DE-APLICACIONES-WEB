@@ -1,56 +1,74 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for, request
+from models import Inventario, Producto
 
 app = Flask(__name__)
 
-# Base de datos ficticia
-productos_lista = [
-    {
-        "id": 1,
-        "nombre": "Camiseta Oversize",
-        "precio": 25,
-        "descripcion": "Camiseta urbana estilo oversize 100% algodón",
-        "tallas": ["S", "M", "L", "XL"]
-    },
-    {
-        "id": 2,
-        "nombre": "Jeans Slim Fit",
-        "precio": 45,
-        "descripcion": "Jeans ajustados modernos color azul oscuro",
-        "tallas": ["30", "32", "34", "36"]
-    },
-    {
-        "id": 3,
-        "nombre": "Chaqueta de Cuero",
-        "precio": 85,
-        "descripcion": "Chaqueta premium de cuero sintético",
-        "tallas": ["M", "L", "XL"]
-    }
-]
+inventario = Inventario()
 
-@app.route("/")
+
+# =============================
+# RUTAS BÁSICAS
+# =============================
+
+@app.route('/')
 def inicio():
-    return render_template("index.html")
+    return render_template('index.html')
 
-@app.route("/about")
+
+@app.route('/about')
 def about():
-    return render_template("about.html")
+    return render_template('about.html')
 
-@app.route("/productos")
+
+# =============================
+# MOSTRAR PRODUCTOS (READ)
+# =============================
+
+@app.route('/productos')
 def productos():
-    return render_template("productos.html", productos=productos_lista)
+    productos = inventario.mostrar_todos()
+    return render_template('productos.html', productos=productos)
 
-@app.route("/producto/<int:id>")
-def detalle(id):
-    producto = next((p for p in productos_lista if p["id"] == id), None)
-    return render_template("detalle.html", producto=producto)
 
-@app.route("/factura")
-def factura():
-    return render_template("factura.html")
+# =============================
+# AGREGAR PRODUCTO (CREATE)
+# =============================
 
-@app.route("/login")
-def login():
-    return render_template("login.html")
+@app.route('/agregar', methods=['POST'])
+def agregar():
+    nombre = request.form['nombre']
+    cantidad = int(request.form['cantidad'])
+    precio = float(request.form['precio'])
 
-if __name__ == "__main__":
+    nuevo_producto = Producto(None, nombre, cantidad, precio)
+    inventario.añadir_producto(nuevo_producto)
+
+    return redirect(url_for('productos'))
+
+
+# =============================
+# ELIMINAR PRODUCTO (DELETE)
+# =============================
+
+@app.route('/eliminar/<int:id>')
+def eliminar(id):
+    inventario.eliminar_producto(id)
+    return redirect(url_for('productos'))
+
+
+# =============================
+# ACTUALIZAR PRODUCTO (UPDATE)
+# =============================
+
+@app.route('/actualizar/<int:id>', methods=['POST'])
+def actualizar(id):
+    cantidad = int(request.form['cantidad'])
+    precio = float(request.form['precio'])
+
+    inventario.actualizar_producto(id, cantidad, precio)
+
+    return redirect(url_for('productos'))
+
+
+if __name__ == '__main__':
     app.run(debug=True)
