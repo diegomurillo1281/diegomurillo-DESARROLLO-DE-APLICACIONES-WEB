@@ -1,53 +1,72 @@
 from flask import Flask, render_template, request, redirect, url_for
-from models import Producto
+from models import Inventario
 
 app = Flask(__name__)
 
-# Crear tabla al iniciar
-Producto.crear_tabla()
+# Crear inventario (usa diccionario + SQLite)
+inventario = Inventario()
 
+
+# =========================
+# INICIO
+# =========================
 @app.route("/")
 def index():
-    productos = Producto.obtener_todos()
+    productos = inventario.mostrar_todos()
     return render_template("index.html", productos=productos)
 
+
+# =========================
+# LISTAR PRODUCTOS
+# =========================
 @app.route("/productos")
 def listar_productos():
-    productos = Producto.obtener_todos()
+    productos = inventario.mostrar_todos()
     return render_template("productos.html", productos=productos)
 
+
+# =========================
+# AGREGAR
+# =========================
 @app.route("/agregar", methods=["GET", "POST"])
 def agregar_producto():
     if request.method == "POST":
         nombre = request.form["nombre"]
+        cantidad = int(request.form["cantidad"])
         precio = float(request.form["precio"])
-        Producto.insertar(nombre, precio)
-        return redirect("/productos")
+
+        inventario.agregar_producto(nombre, cantidad, precio)
+        return redirect(url_for("listar_productos"))
+
     return render_template("agregar_producto.html")
 
+
+# =========================
+# EDITAR
+# =========================
 @app.route("/editar/<int:id>", methods=["GET", "POST"])
 def editar_producto(id):
-    producto = Producto.obtener_por_id(id)
+    producto = inventario.productos.get(id)
 
     if request.method == "POST":
         nombre = request.form["nombre"]
+        cantidad = int(request.form["cantidad"])
         precio = float(request.form["precio"])
-        Producto.actualizar(id, nombre, precio)
-        return redirect("/productos")
+
+        inventario.actualizar_producto(id, nombre, cantidad, precio)
+        return redirect(url_for("listar_productos"))
 
     return render_template("editar_producto.html", producto=producto)
 
+
+# =========================
+# ELIMINAR
+# =========================
 @app.route("/eliminar/<int:id>")
 def eliminar_producto(id):
-    Producto.eliminar(id)
-    return redirect("/productos")
+    inventario.eliminar_producto(id)
+    return redirect(url_for("listar_productos"))
 
-@app.route("/login", methods=["GET", "POST"])
-def login():
-    if request.method == "POST":
-        # Aquí luego puedes validar usuario
-        return redirect("/")
-    return render_template("login.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

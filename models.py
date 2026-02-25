@@ -1,79 +1,96 @@
 import sqlite3
 
+
+# =========================
+# CLASE PRODUCTO
+# =========================
 class Producto:
 
-    def __init__(self, id, nombre, precio):
+    def __init__(self, id, nombre, cantidad, precio):
         self.id = id
         self.nombre = nombre
+        self.cantidad = cantidad
         self.precio = precio
 
-    @staticmethod
-    def conectar():
-        return sqlite3.connect("database.db")
+    def __str__(self):
+        return f"ID: {self.id} | {self.nombre} | Cantidad: {self.cantidad} | Precio: ${self.precio}"
 
-    @staticmethod
-    def crear_tabla():
-        conn = Producto.conectar()
-        cursor = conn.cursor()
-        cursor.execute("""
+
+# =========================
+# CLASE INVENTARIO
+# =========================
+class Inventario:
+
+    def __init__(self):
+        self.productos = {}  # Diccionario {id: Producto}
+        self.conectar_db()
+        self.crear_tabla()
+        self.cargar_productos()
+
+    # --------- SQLITE ---------
+
+    def conectar_db(self):
+        self.conn = sqlite3.connect("database.db")
+        self.cursor = self.conn.cursor()
+
+    def crear_tabla(self):
+        self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS productos (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 nombre TEXT NOT NULL,
+                cantidad INTEGER NOT NULL,
                 precio REAL NOT NULL
             )
         """)
-        conn.commit()
-        conn.close()
+        self.conn.commit()
 
-    @staticmethod
-    def obtener_todos():
-        conn = Producto.conectar()
-        cursor = conn.cursor()
-        cursor.execute("SELECT * FROM productos")
-        filas = cursor.fetchall()
-        conn.close()
+    # --------- CARGAR DESDE BD A DICCIONARIO ---------
 
-        productos = []
+    def cargar_productos(self):
+        self.cursor.execute("SELECT * FROM productos")
+        filas = self.cursor.fetchall()
+
         for fila in filas:
-            productos.append(Producto(fila[0], fila[1], fila[2]))
+            producto = Producto(fila[0], fila[1], fila[2], fila[3])
+            self.productos[fila[0]] = producto
 
-        return productos
+    # --------- CRUD ---------
 
-    @staticmethod
-    def insertar(nombre, precio):
-        conn = Producto.conectar()
-        cursor = conn.cursor()
-        cursor.execute("INSERT INTO productos (nombre, precio) VALUES (?, ?)", (nombre, precio))
-        conn.commit()
-        conn.close()
-
-    @staticmethod
-    def eliminar(id):
-        conn = Producto.conectar()
-        cursor = conn.cursor()
-        cursor.execute("DELETE FROM productos WHERE id = ?", (id,))
-        conn.commit()
-        conn.close()
-
-    @staticmethod
-    def obtener_por_id(id):
-        conn = Producto.conectar()
-        cursor = conn.cursor()
-        cursor.execute("SELECT * FROM productos WHERE id = ?", (id,))
-        fila = cursor.fetchone()
-        conn.close()
-
-        if fila:
-            return Producto(fila[0], fila[1], fila[2])
-        return None
-
-    @staticmethod
-    def actualizar(id, nombre, precio):
-        conn = Producto.conectar()
-        cursor = conn.cursor()
-        cursor.execute(
-            "UPDATE productos SET nombre = ?, precio = ? WHERE id = ?",
-            (nombre, precio, id)
+    def agregar_producto(self, nombre, cantidad, precio):
+        self.cursor.execute(
+            "INSERT INTO productos (nombre, cantidad, precio) VALUES (?, ?, ?)",
+            (nombre, cantidad, precio)
         )
-        conn.commit()
-        conn.close()
+        self.conn.commit()
+
+        nuevo_id = self.cursor.lastrowid
+        producto = Producto(nuevo_id, nombre, cantidad, precio)
+        self.productos[nuevo_id] = producto
+
+    def eliminar_producto(self, id):
+        if id in self.productos:
+            self.cursor.execute("DELETE FROM productos WHERE id = ?", (id,))
+            self.conn.commit()
+            del self.productos[id]
+
+    def actualizar_producto(self, id, nombre, cantidad, precio):
+        if id in self.productos:
+            self.cursor.execute("""
+                UPDATE productos
+                SET nombre = ?, cantidad = ?, precio = ?
+                WHERE id = ?
+            """, (nombre, cantidad, precio, id))
+            self.conn.commit()
+
+            self.productos[id].nombre = nombre
+            self.productos[id].cantidad = cantidad
+            self.productos[id].precio = precio
+
+    def buscar_por_nombre(self, nombre):
+        return [
+            p for p in self.productos.values()
+            if nombre.lower() in p.nombre.lower()
+        ]
+
+    def mostrar_todos(self):
+        return list(self.productos.values())
