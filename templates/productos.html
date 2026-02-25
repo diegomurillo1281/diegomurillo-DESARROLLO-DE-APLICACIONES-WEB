@@ -2,17 +2,18 @@
 
 {% block content %}
 
-<h2>Productos Destacados</h2>
+<h2>Lista de Productos</h2>
+
+<a href="/agregar" class="btn">Agregar Producto</a>
 
 <div class="productos-grid">
     {% for producto in productos %}
     <div class="card">
-        <h3>{{ producto.get_nombre() }}</h3>
-        <p><strong>Precio:</strong> ${{ producto.get_precio() }}</p>
+        <h3>{{ producto.nombre }}</h3>
+        <p><strong>Precio:</strong> ${{ producto.precio }}</p>
 
-        <a href="/editar/{{ producto.get_id() }}" class="btn">
-            Ver Detalle
-        </a>
+        <a href="/editar/{{ producto.id }}" class="btn">Editar</a>
+        <a href="/eliminar/{{ producto.id }}" class="btn">Eliminar</a>
     </div>
     {% endfor %}
 </div>
