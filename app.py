@@ -1,74 +1,54 @@
-from flask import Flask, render_template, redirect, url_for, request
-from models import Inventario, Producto
+from flask import Flask, render_template, request, redirect, url_for
+from models import Inventario
 
 app = Flask(__name__)
-
 inventario = Inventario()
 
 
-# =============================
-# RUTAS BÁSICAS
-# =============================
-
-@app.route('/')
-def inicio():
-    return render_template('index.html')
+@app.route("/")
+def index():
+    return render_template("index.html")
 
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-
-# =============================
-# MOSTRAR PRODUCTOS (READ)
-# =============================
-
-@app.route('/productos')
+@app.route("/productos")
 def productos():
-    productos = inventario.mostrar_todos()
-    return render_template('productos.html', productos=productos)
+    lista_productos = inventario.obtener_todos()
+    return render_template("productos.html", productos=lista_productos)
 
 
-# =============================
-# AGREGAR PRODUCTO (CREATE)
-# =============================
+@app.route("/agregar", methods=["GET", "POST"])
+def agregar_producto():
+    if request.method == "POST":
+        nombre = request.form["nombre"]
+        cantidad = int(request.form["cantidad"])
+        precio = float(request.form["precio"])
 
-@app.route('/agregar', methods=['POST'])
-def agregar():
-    nombre = request.form['nombre']
-    cantidad = int(request.form['cantidad'])
-    precio = float(request.form['precio'])
+        inventario.agregar_producto(nombre, cantidad, precio)
+        return redirect(url_for("productos"))
 
-    nuevo_producto = Producto(None, nombre, cantidad, precio)
-    inventario.añadir_producto(nuevo_producto)
-
-    return redirect(url_for('productos'))
+    return render_template("agregar_producto.html")
 
 
-# =============================
-# ELIMINAR PRODUCTO (DELETE)
-# =============================
+@app.route("/editar/<int:id>", methods=["GET", "POST"])
+def editar_producto(id):
+    producto = inventario.obtener_producto(id)
 
-@app.route('/eliminar/<int:id>')
-def eliminar(id):
+    if request.method == "POST":
+        nombre = request.form["nombre"]
+        cantidad = int(request.form["cantidad"])
+        precio = float(request.form["precio"])
+
+        inventario.actualizar_producto(id, nombre, cantidad, precio)
+        return redirect(url_for("productos"))
+
+    return render_template("editar_producto.html", producto=producto)
+
+
+@app.route("/eliminar/<int:id>")
+def eliminar_producto(id):
     inventario.eliminar_producto(id)
-    return redirect(url_for('productos'))
+    return redirect(url_for("productos"))
 
 
-# =============================
-# ACTUALIZAR PRODUCTO (UPDATE)
-# =============================
-
-@app.route('/actualizar/<int:id>', methods=['POST'])
-def actualizar(id):
-    cantidad = int(request.form['cantidad'])
-    precio = float(request.form['precio'])
-
-    inventario.actualizar_producto(id, cantidad, precio)
-
-    return redirect(url_for('productos'))
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)

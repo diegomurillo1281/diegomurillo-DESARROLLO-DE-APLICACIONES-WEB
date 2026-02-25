@@ -1,39 +1,29 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
+<h2>Lista de Productos</h2>
 
-<h2>Gestión de Inventario</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+    </tr>
 
-<h3>Agregar Producto</h3>
-
-<form action="{{ url_for('agregar') }}" method="POST">
-    <input type="text" name="nombre" placeholder="Nombre" required>
-    <input type="number" name="cantidad" placeholder="Cantidad" required>
-    <input type="number" step="0.01" name="precio" placeholder="Precio" required>
-    <button type="submit">Agregar</button>
-</form>
-
-<hr>
-
-<h3>Lista de Productos</h3>
-
-{% for producto in productos %}
-<div class="card">
-    <h4>{{ producto[1] }}</h4>
-    <p>Cantidad: {{ producto[2] }}</p>
-    <p>Precio: ${{ producto[3] }}</p>
-
-    <form action="{{ url_for('actualizar', id=producto[0]) }}" method="POST">
-        <input type="number" name="cantidad" placeholder="Nueva cantidad" required>
-        <input type="number" step="0.01" name="precio" placeholder="Nuevo precio" required>
-        <button type="submit">Actualizar</button>
-    </form>
-
-    <a href="{{ url_for('eliminar', id=producto[0]) }}">
-        <button>Eliminar</button>
-    </a>
-</div>
-<hr>
-{% endfor %}
+    {% for producto in productos %}
+    <tr>
+        <td>{{ producto.get_id() }}</td>
+        <td>{{ producto.get_nombre() }}</td>
+        <td>{{ producto.get_cantidad() }}</td>
+        <td>${{ producto.get_precio() }}</td>
+        <td>
+            <a href="/editar/{{ producto.get_id() }}">Editar</a>
+            <a href="/eliminar/{{ producto.get_id() }}">Eliminar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
 
 {% endblock %}
