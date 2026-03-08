@@ -2,17 +2,14 @@ import os
 import json
 import csv
 
-# Rutas de archivos
 ruta_txt = "inventario/data/datos.txt"
 ruta_json = "inventario/data/datos.json"
 ruta_csv = "inventario/data/datos.csv"
 
 
-# =========================
-# TXT
-# =========================
-def guardar_txt(nombre, precio):
+# ================= TXT =================
 
+def guardar_txt(nombre, precio):
     with open(ruta_txt, "a") as archivo:
         archivo.write(f"{nombre},{precio}\n")
 
@@ -26,6 +23,7 @@ def leer_txt():
         with open(ruta_txt, "r") as archivo:
 
             for linea in archivo:
+
                 nombre, precio = linea.strip().split(",")
 
                 datos.append({
@@ -36,9 +34,8 @@ def leer_txt():
     return datos
 
 
-# =========================
-# JSON
-# =========================
+# ================= JSON =================
+
 def guardar_json(nombre, precio):
 
     datos = []
@@ -73,9 +70,8 @@ def leer_json():
     return []
 
 
-# =========================
-# CSV
-# =========================
+# ================= CSV =================
+
 def guardar_csv(nombre, precio):
 
     with open(ruta_csv, "a", newline="") as archivo:
