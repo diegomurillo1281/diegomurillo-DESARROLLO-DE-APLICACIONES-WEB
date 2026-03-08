@@ -1,0 +1,31 @@
+import csv
+
+ruta_csv = "inventario/data/datos.csv"
+
+
+def guardar_csv(nombre, precio):
+
+    with open(ruta_csv, "a", newline="") as archivo:
+
+        writer = csv.writer(archivo)
+
+        writer.writerow([nombre, precio])
+
+
+def leer_csv():
+
+    datos = []
+
+    if os.path.exists(ruta_csv):
+
+        with open(ruta_csv, "r") as archivo:
+
+            reader = csv.reader(archivo)
+
+            for fila in reader:
+                datos.append({
+                    "nombre": fila[0],
+                    "precio": fila[1]
+                })
+
+    return datos

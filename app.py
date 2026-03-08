@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
 from models import Inventario
 
+# NUEVO IMPORT PARA ARCHIVOS
+from inventario.productos import *
+
 app = Flask(__name__)
 
 # Crear inventario
@@ -23,17 +26,15 @@ def listar_productos():
     return render_template("productos.html", productos=productos)
 
 # =========================
-# AGREGAR (CORREGIDO)
+# AGREGAR
 # =========================
 @app.route("/agregar", methods=["GET", "POST"])
 def agregar_producto():
     if request.method == "POST":
-        # Usamos .get para evitar el "Bad Request" si falta un campo
         nombre = request.form.get("nombre")
         cantidad = request.form.get("cantidad")
         precio = request.form.get("precio")
 
-        # Validación básica: si todo existe, guardamos
         if nombre and cantidad and precio:
             inventario.agregar_producto(nombre, int(cantidad), float(precio))
             return redirect(url_for("listar_productos"))
@@ -43,13 +44,15 @@ def agregar_producto():
     return render_template("agregar_producto.html")
 
 # =========================
-# EDITAR (CORREGIDO)
+# EDITAR
 # =========================
 @app.route("/editar/<int:id>", methods=["GET", "POST"])
 def editar_producto(id):
+
     producto = inventario.productos.get(id)
 
     if request.method == "POST":
+
         nombre = request.form.get("nombre")
         cantidad = request.form.get("cantidad")
         precio = request.form.get("precio")
@@ -75,13 +78,11 @@ def eliminar_producto(id):
 # =========================
 @app.route("/login", methods=["GET", "POST"])
 def login():
+
     if request.method == "POST":
         return redirect(url_for("index"))
+
     return render_template("login.html")
-
-if __name__ == "__main__":
-    app.run(debug=True)
-
 
 # =========================
 # FACTURA
@@ -90,7 +91,6 @@ if __name__ == "__main__":
 def factura():
     return render_template("factura.html")
 
-
 # =========================
 # ABOUT
 # =========================
@@ -98,6 +98,36 @@ def factura():
 def about():
     return render_template("about.html")
 
+# =========================
+# NUEVA RUTA PARA ARCHIVOS
+# =========================
+@app.route("/datos", methods=["GET","POST"])
+def datos():
 
+    if request.method == "POST":
+
+        nombre = request.form.get("nombre")
+        precio = request.form.get("precio")
+
+        if nombre and precio:
+
+            guardar_txt(nombre, precio)
+            guardar_json(nombre, precio)
+            guardar_csv(nombre, precio)
+
+    datos_txt = leer_txt()
+    datos_json = leer_json()
+    datos_csv = leer_csv()
+
+    return render_template(
+        "datos.html",
+        txt=datos_txt,
+        json=datos_json,
+        csv=datos_csv
+    )
+
+# =========================
+# EJECUTAR APP
+# =========================
 if __name__ == "__main__":
     app.run(debug=True)

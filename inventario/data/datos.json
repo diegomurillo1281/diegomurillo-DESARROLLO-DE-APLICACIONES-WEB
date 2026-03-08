@@ -1,0 +1,36 @@
+import json
+
+ruta_json = "inventario/data/datos.json"
+
+
+def guardar_json(nombre, precio):
+
+    datos = []
+
+    if os.path.exists(ruta_json):
+
+        with open(ruta_json, "r") as archivo:
+            try:
+                datos = json.load(archivo)
+            except:
+                datos = []
+
+    nuevo = {
+        "nombre": nombre,
+        "precio": precio
+    }
+
+    datos.append(nuevo)
+
+    with open(ruta_json, "w") as archivo:
+        json.dump(datos, archivo, indent=4)
+
+
+def leer_json():
+
+    if os.path.exists(ruta_json):
+
+        with open(ruta_json, "r") as archivo:
+            return json.load(archivo)
+
+    return []

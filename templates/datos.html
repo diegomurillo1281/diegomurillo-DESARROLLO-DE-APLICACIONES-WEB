@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Guardar Datos</h2>
+
+<form method="POST">
+
+<input type="text" name="nombre" placeholder="Nombre producto" required>
+
+<input type="number" name="precio" placeholder="Precio" required>
+
+<button type="submit">Guardar</button>
+
+</form>
+
+<hr>
+
+<h3>Datos TXT</h3>
+
+{% for d in txt %}
+<p>{{ d.nombre }} - {{ d.precio }}</p>
+{% endfor %}
+
+<h3>Datos JSON</h3>
+
+{% for d in json %}
+<p>{{ d.nombre }} - {{ d.precio }}</p>
+{% endfor %}
+
+<h3>Datos CSV</h3>
+
+{% for d in csv %}
+<p>{{ d.nombre }} - {{ d.precio }}</p>
+{% endfor %}
+
+{% endblock %}
