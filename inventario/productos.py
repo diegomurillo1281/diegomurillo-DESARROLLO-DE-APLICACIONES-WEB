@@ -24,6 +24,9 @@ def leer_txt():
 
             for linea in archivo:
 
+                if linea.strip() == "":
+                    continue
+
                 nombre, precio = linea.strip().split(",")
 
                 datos.append({
@@ -65,7 +68,11 @@ def leer_json():
     if os.path.exists(ruta_json):
 
         with open(ruta_json, "r") as archivo:
-            return json.load(archivo)
+
+            try:
+                return json.load(archivo)
+            except:
+                return []
 
     return []
 
@@ -92,6 +99,9 @@ def leer_csv():
             reader = csv.reader(archivo)
 
             for fila in reader:
+
+                if len(fila) < 2:
+                    continue
 
                 datos.append({
                     "nombre": fila[0],
