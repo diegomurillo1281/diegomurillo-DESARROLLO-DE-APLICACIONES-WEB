@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from models import Inventario
 
-# NUEVO IMPORT PARA ARCHIVOS
+# IMPORT PARA ARCHIVOS
 from inventario.productos import *
 
 app = Flask(__name__)
@@ -26,11 +26,13 @@ def listar_productos():
     return render_template("productos.html", productos=productos)
 
 # =========================
-# AGREGAR
+# AGREGAR PRODUCTO
 # =========================
 @app.route("/agregar", methods=["GET", "POST"])
 def agregar_producto():
+
     if request.method == "POST":
+
         nombre = request.form.get("nombre")
         cantidad = request.form.get("cantidad")
         precio = request.form.get("precio")
@@ -38,13 +40,14 @@ def agregar_producto():
         if nombre and cantidad and precio:
             inventario.agregar_producto(nombre, int(cantidad), float(precio))
             return redirect(url_for("listar_productos"))
+
         else:
             return "Error: Faltan campos en el formulario", 400
 
     return render_template("agregar_producto.html")
 
 # =========================
-# EDITAR
+# EDITAR PRODUCTO
 # =========================
 @app.route("/editar/<int:id>", methods=["GET", "POST"])
 def editar_producto(id):
@@ -60,17 +63,20 @@ def editar_producto(id):
         if nombre and cantidad and precio:
             inventario.actualizar_producto(id, nombre, int(cantidad), float(precio))
             return redirect(url_for("listar_productos"))
+
         else:
             return "Error: Faltan campos para editar", 400
 
     return render_template("editar_producto.html", producto=producto)
 
 # =========================
-# ELIMINAR
+# ELIMINAR PRODUCTO
 # =========================
 @app.route("/eliminar/<int:id>")
-def eliminar_producto(id):
+def eliminar_producto():
+
     inventario.eliminar_producto(id)
+
     return redirect(url_for("listar_productos"))
 
 # =========================
@@ -85,10 +91,28 @@ def login():
     return render_template("login.html")
 
 # =========================
+# REGISTRO DE USUARIO
+# =========================
+@app.route("/registro_usuario", methods=["GET", "POST"])
+def registro_usuario():
+
+    if request.method == "POST":
+
+        nombre = request.form.get("nombre")
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        # Aquí podrías guardar el usuario en base de datos
+        return redirect(url_for("login"))
+
+    return render_template("registro_usuario.html")
+
+# =========================
 # FACTURA
 # =========================
 @app.route("/factura")
 def factura():
+
     return render_template("factura.html")
 
 # =========================
@@ -96,12 +120,13 @@ def factura():
 # =========================
 @app.route("/about")
 def about():
+
     return render_template("about.html")
 
 # =========================
-# NUEVA RUTA PARA ARCHIVOS
+# GUARDAR DATOS EN TXT JSON CSV
 # =========================
-@app.route("/datos", methods=["GET","POST"])
+@app.route("/datos", methods=["GET", "POST"])
 def datos():
 
     if request.method == "POST":
