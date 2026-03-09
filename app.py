@@ -1,7 +1,21 @@
-from flask import Flask, render_template, request, redirect, url_for
+import os
 import mysql.connector
+from flask import Flask
 
 app = Flask(__name__)
+
+# 🔧 Conexión dinámica a MySQL
+def get_db_connection():
+    return mysql.connector.connect(
+        host=os.getenv("DB_HOST", "localhost"),
+        port=int(os.getenv("DB_PORT", 3306)),
+        user=os.getenv("DB_USER", "root"),
+        password=os.getenv("DB_PASSWORD", ""),
+        database=os.getenv("DB_NAME", "tienda_estilo_urbano")
+    )
+
+# Ejemplo de uso:
+# conexion = get_db_connection()
 
 # =========================
 # CONEXIÓN MYSQL
