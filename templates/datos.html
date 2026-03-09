@@ -1,37 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container">
+    <h1 style="color: #d4af37;">Persistencia Multiformato</h1>
+    
+    <div class="card" style="width: 100%; margin-bottom: 30px;">
+        <h3>Guardar en Archivos Locales</h3>
+        <form action="/datos" method="POST" style="display: flex; gap: 10px;">
+            <input type="text" name="nombre" placeholder="Nombre producto" required style="padding: 10px; flex: 2;">
+            <input type="number" name="precio" placeholder="Precio" required style="padding: 10px; flex: 1;">
+            <button type="submit" class="btn">Guardar</button>
+        </form>
+    </div>
 
-<h2>Guardar Datos</h2>
+    <div class="productos-grid">
+        <div class="card">
+            <h3 style="border-bottom: 2px solid #d4af37;">Datos TXT</h3>
+            <pre>{{ txt }}</pre> </div>
 
-<form method="POST">
+        <div class="card">
+            <h3 style="border-bottom: 2px solid #d4af37;">Datos JSON</h3>
+            <code>{{ json }}</code>
+        </div>
 
-<input type="text" name="nombre" placeholder="Nombre producto" required>
-
-<input type="number" name="precio" placeholder="Precio" required>
-
-<button type="submit">Guardar</button>
-
-</form>
-
-<hr>
-
-<h3>Datos TXT</h3>
-
-{% for d in txt %}
-<p>{{ d.nombre }} - {{ d.precio }}</p>
-{% endfor %}
-
-<h3>Datos JSON</h3>
-
-{% for d in json %}
-<p>{{ d.nombre }} - {{ d.precio }}</p>
-{% endfor %}
-
-<h3>Datos CSV</h3>
-
-{% for d in csv %}
-<p>{{ d.nombre }} - {{ d.precio }}</p>
-{% endfor %}
-
+        <div class="card">
+            <h3 style="border-bottom: 2px solid #d4af37;">Datos CSV</h3>
+            <p>{{ csv }}</p>
+        </div>
+    </div>
+</div>
 {% endblock %}
