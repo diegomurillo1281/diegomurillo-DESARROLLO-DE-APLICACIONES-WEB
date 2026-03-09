@@ -4,18 +4,29 @@ from flask import Flask
 
 app = Flask(__name__)
 
-# 🔧 Conexión dinámica a MySQL
+# 🔧 Función para obtener conexión MySQL (dinámica)
 def get_db_connection():
-    return mysql.connector.connect(
-        host=os.getenv("DB_HOST", "localhost"),
-        port=int(os.getenv("DB_PORT", 3306)),
-        user=os.getenv("DB_USER", "root"),
-        password=os.getenv("DB_PASSWORD", ""),
-        database=os.getenv("DB_NAME", "tienda_estilo_urbano")
-    )
+    try:
+        return mysql.connector.connect(
+            host=os.getenv("DB_HOST", "localhost"),
+            port=int(os.getenv("DB_PORT", 3306)),
+            user=os.getenv("DB_USER", "root"),
+            password=os.getenv("DB_PASSWORD", ""),
+            database=os.getenv("DB_NAME", "tienda_estilo_urbano")
+        )
+    except mysql.connector.Error as err:
+        print(f"❌ Error de conexión: {err}")
+        return None
 
-# Ejemplo de uso:
-# conexion = get_db_connection()
+# ⚠️ IMPORTANTE: No crear la conexión al inicio del archivo
+# Crea la conexión solo cuando la necesites dentro de una ruta:
+# Ejemplo:
+# @app.route('/productos')
+# def listar_productos():
+#     conexion = get_db_connection()
+#     if conexion:
+#         # tu lógica aquí
+#         conexion.close()
 
 # =========================
 # CONEXIÓN MYSQL
